@@ -1,7 +1,7 @@
 #include <iostream>
 #include "CKonto.h"
 
-using std::cout, std::cin, std::endl;
+#define ANZAHL_KONTEN 3
 
 
 int main() {
@@ -13,7 +13,11 @@ int main() {
     konto1.anzeigen();
     CKonto konto2;
     konto2.anzeigen();
-    konto2.zeige_anzahl_konten();
+    CKonto::zeige_anzahl_konten();
+
+
+    CKonto kontos[ANZAHL_KONTEN] = {100, 300, 400};
+    zeige_gesamtbetrag(kontos, ANZAHL_KONTEN);
 
     return 0;
 }

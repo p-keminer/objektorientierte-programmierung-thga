@@ -18,7 +18,7 @@ private:
 
 protected:
 
-    int get_laufende_nummer() const {
+    int get_laufende_nummer() {
         return laufende_nummer;
     }
 
@@ -30,7 +30,7 @@ public:
 
     void anzeigen() const;
 
-    void zeige_anzahl_konten();
+    static void zeige_anzahl_konten();
 
     /// GETTER
 
@@ -43,12 +43,15 @@ public:
         return kontonummer;
     }
 
+    /// FUNKTIONALITÄT
 
     void einzahlen(const double &betrag);
 
     void auszahlen(const double &betrag);
 
-    friend void berechne_gesamtbetrag(const std::vector<CKonto> kontos, const int &n);
+
+
+    friend void zeige_gesamtbetrag(const CKonto kontos[], const int &n);
 };
 
 

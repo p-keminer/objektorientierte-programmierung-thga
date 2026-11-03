@@ -42,7 +42,7 @@ void CKonto::anzeigen() const {
 }
 
 void CKonto::zeige_anzahl_konten() {
-    cout << "Anzahl Konten: " << this->get_laufende_nummer() << endl;
+    cout << "Anzahl Konten: " << laufende_nummer << endl;
 }
 
 /// FUNKTIONALITÄT
@@ -55,7 +55,15 @@ void CKonto::auszahlen(const double &betrag) {
     kontostand -= (betrag <= kontostand ? betrag : 0) ;
 }
 
-friend void berechne_gesamtbetrag(const CKonto kontos[], const int &n);
+
+
+void zeige_gesamtbetrag(const CKonto kontos[], const int &n) {
+    double summe = 0;
+    for (int i = 0; i < n; i++ ) {
+        summe += kontos[i].kontostand;
+    }
+    cout << "Gesamtbetrag aller Konten: " << summe << endl;
+}
 
 
 
