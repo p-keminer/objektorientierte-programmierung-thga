@@ -3,6 +3,18 @@ project(OOP_Hausaufgabe)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(OOP_Hausaufgabe main.cpp
-        CKonto.cpp
-        CKonto.h)
+add_executable(OOP_Hausaufgabe src/main.cpp
+        src/CKonto.cpp
+        src/CKonto.h
+        src/CSparbuch.cpp
+        src/CSparbuch.h)
+
+add_executable(test_CKonto src/CKonto.cpp
+        src/CKonto.h
+        tests/test_CKonto.cpp)
+
+add_executable(test_CSparbuch src/CKonto.cpp
+        src/CKonto.h
+        src/Csparbuch.cpp
+        src/CSparbuch.h
+        tests/test_CSparbuch.cpp)
