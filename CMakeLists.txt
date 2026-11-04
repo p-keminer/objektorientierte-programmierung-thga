@@ -7,7 +7,9 @@ add_executable(OOP_Hausaufgabe src/main.cpp
         src/CKonto.cpp
         src/CKonto.h
         src/CSparbuch.cpp
-        src/CSparbuch.h)
+        src/CSparbuch.h
+        src/CGirokonto.cpp
+        src/CGirokonto.h)
 
 add_executable(test_CKonto src/CKonto.cpp
         src/CKonto.h
@@ -18,3 +20,9 @@ add_executable(test_CSparbuch src/CKonto.cpp
         src/Csparbuch.cpp
         src/CSparbuch.h
         tests/test_CSparbuch.cpp)
+
+add_executable(test_CGirokonto src/CKonto.cpp
+        src/CKonto.h
+        src/CGirokonto.cpp
+        src/CGirokonto.h
+        tests/test_CGirokonto.cpp)

@@ -47,13 +47,18 @@ void test_ein_aus_zahlen() {
 
     // negativen wert auszahlen
 
-    konten.konto2.auszahlen(-200);
+    assert(konten.konto2.auszahlen(-200) == 0);
     assert(konten.konto2.get_kontostand() == 400);
 
     // kontostand zu gering für auszahlung
 
     konten.konto3.auszahlen(1);
     assert(konten.konto3.get_kontostand() == 0);
+
+    // rückgabewert auszahlung
+
+    assert(konten.konto2.auszahlen(200) == 200);
+    assert(konten.konto1.auszahlen(171) == 171);
 
 
 }

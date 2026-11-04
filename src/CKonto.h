@@ -2,6 +2,9 @@
 #ifndef OOP_HAUSAUFGABE_CKONTO_H
 #define OOP_HAUSAUFGABE_CKONTO_H
 
+#include <string>
+
+using std::string;
 
 class CKonto {
 private:
@@ -20,6 +23,10 @@ protected:
     int get_anzahl_konten() const {
         return anzahl_konten;
     }
+
+    /// nur für girokonto gedacht
+
+    void set_kontostand(const double &kontostand, const string &berechtigung="nein");
 
 public:
     CKonto (const double &kontostand=0);
@@ -42,15 +49,12 @@ public:
         return kontonummer;
     }
 
-    /// SETTER
-
-
 
     /// FUNKTIONALITÄT
 
     void einzahlen(const double &betrag);
 
-    void auszahlen(const double &betrag);
+    double auszahlen(const double &betrag);
 
 
 

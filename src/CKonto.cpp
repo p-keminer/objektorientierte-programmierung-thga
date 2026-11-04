@@ -12,6 +12,12 @@ void CKonto::init_kontostand(const double &kontostand) {
     this->kontostand = (kontostand >= 0 ? kontostand : 0);
 }
 
+/// PROTECTED
+
+void CKonto::set_kontostand(const double &kontostand, const string &berechtigung) {
+    this->kontostand = (berechtigung == "OK" ? kontostand : this->kontostand);
+}
+
 
 /// PUBLIC
 
@@ -47,9 +53,10 @@ void CKonto::einzahlen(const double &betrag) {
     kontostand += (betrag > 0 ? betrag : 0) ;
 }
 
-void CKonto::auszahlen(const double &betrag) {
-    double auszahlungs_betrag = (betrag > 0 ? betrag : 0);
-    kontostand -= (auszahlungs_betrag <= kontostand ? auszahlungs_betrag : 0) ;
+double CKonto::auszahlen(const double &betrag) {
+    double auszahlungsbetrag = (betrag > 0 ? (betrag <= kontostand ? betrag : 0) : 0);
+    kontostand -= auszahlungsbetrag;
+    return auszahlungsbetrag;
 }
 
 
