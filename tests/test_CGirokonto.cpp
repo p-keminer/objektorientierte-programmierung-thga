@@ -55,7 +55,7 @@ void test_auszahlen() {
     assert(konten.konto3.auszahlen(200) == 0);
     assert(konten.konto3.get_kontostand() == 0);
 
- // negative auszahungen funktionieren nicht
+    // negative auszahungen funktionieren nicht
     assert(konten.konto3.auszahlen(-200) == 0);
     assert(konten.konto3.get_kontostand() == 0);
 
