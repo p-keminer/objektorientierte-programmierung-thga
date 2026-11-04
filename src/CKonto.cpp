@@ -12,25 +12,21 @@ void CKonto::init_kontostand(const double &kontostand) {
     this->kontostand = (kontostand >= 0 ? kontostand : 0);
 }
 
-void CKonto::init_kontonummer() {
-    std::mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count());
-    std::uniform_int_distribution<unsigned long long> dist(100000000000ULL, 999999999999ULL);
-    kontonummer = dist(rng);
-}
 
 /// PUBLIC
 
 CKonto::CKonto (const double &kontostand)
 {
     init_kontostand(kontostand);
-    init_kontonummer();
+    kontonummer += laufende_nummer;
     laufende_nummer++;
+    anzahl_konten++;
     // cout << "\nobjekt " << kontonummer << " erstellt\n" << endl;
 }
 
 CKonto::~CKonto() {
     auszahlen(kontostand);
-    laufende_nummer--;
+    anzahl_konten--;
     // cout << "\nobjekt " << kontonummer << " zerstoert\n" << endl;
 };
 
@@ -42,7 +38,7 @@ void CKonto::anzeigen() const {
 }
 
 void CKonto::zeige_anzahl_konten() {
-    cout << "Anzahl Konten: " << laufende_nummer << endl;
+    cout << "Anzahl Konten: " << anzahl_konten << endl;
 }
 
 /// FUNKTIONALITÄT
@@ -52,7 +48,8 @@ void CKonto::einzahlen(const double &betrag) {
 }
 
 void CKonto::auszahlen(const double &betrag) {
-    kontostand -= (betrag <= kontostand ? betrag : 0) ;
+    double auszahlungs_betrag = (betrag > 0 ? betrag : 0);
+    kontostand -= (auszahlungs_betrag <= kontostand ? auszahlungs_betrag : 0) ;
 }
 
 

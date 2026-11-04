@@ -5,21 +5,20 @@
 
 class CKonto {
 private:
-    unsigned long long kontonummer;
+    unsigned long long kontonummer = 1000000000;
     double kontostand;
 
     inline static int laufende_nummer = 0;
+    inline static int anzahl_konten = 0;
 
     /// INITIALISIERUNG
 
     void init_kontostand(const double &kontostand);
 
-    void init_kontonummer();
-
 protected:
 
-    int get_laufende_nummer() {
-        return laufende_nummer;
+    int get_anzahl_konten() const {
+        return anzahl_konten;
     }
 
 public:
@@ -39,9 +38,13 @@ public:
         return kontostand;
     }
 
-    long long get_kontonummer() const {
+    unsigned long long get_kontonummer() const {
         return kontonummer;
     }
+
+    /// SETTER
+
+
 
     /// FUNKTIONALITÄT
 

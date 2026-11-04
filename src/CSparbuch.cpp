@@ -1,0 +1,27 @@
+#include "CKonto.h"
+#include "CSparbuch.h"
+
+
+
+/// PUBLIC
+
+CSparbuch::CSparbuch(const double &kontostand, const double &zinssatz)
+    : CKonto(kontostand), zinssatz(zinssatz) {
+
+}
+
+/// SETTER
+
+void CSparbuch::set_bearbeitungsgebuehr(const double &gebuehr) {
+    bearbeitungsgebuehr = (gebuehr > 0 ? gebuehr : 0 );
+}
+
+/// FUNKTIONALITÄT
+
+void CSparbuch::verzinsen() {
+    CKonto::einzahlen(get_kontostand() * zinssatz/100 );
+}
+
+void CSparbuch::einzahlen(const double &betrag) {
+    CKonto::einzahlen(betrag-bearbeitungsgebuehr);
+}

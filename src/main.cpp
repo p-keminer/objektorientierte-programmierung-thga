@@ -19,5 +19,11 @@ int main() {
     CKonto kontos[ANZAHL_KONTEN] = {100, 300, 400};
     zeige_gesamtbetrag(kontos, ANZAHL_KONTEN);
 
+    kontos[0].anzeigen();
+    kontos[1].anzeigen();
+    kontos[2].anzeigen();
+    CKonto::zeige_anzahl_konten();
+
+
     return 0;
 }
