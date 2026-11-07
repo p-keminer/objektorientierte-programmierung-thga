@@ -11,7 +11,9 @@ add_executable(OOP_Hausaufgabe src/main.cpp
         src/konten/CGirokonto.cpp
         src/konten/CGirokonto.h
         src/kunden/CKunde.cpp
-        src/kunden/CKunde.h)
+        src/kunden/CKunde.h
+        src/kunden/CBankkunde.cpp
+        src/kunden/CBankkunde.h)
 
 add_executable(test_CKonto src/konten/CKonto.cpp
         src/konten/CKonto.h
