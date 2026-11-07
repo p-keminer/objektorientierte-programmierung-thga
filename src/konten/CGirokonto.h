@@ -1,7 +1,9 @@
 #ifndef OOP_HAUSAUFGABE_CGIROKONTO_H
 #define OOP_HAUSAUFGABE_CGIROKONTO_H
 
-#include "..\src\CKonto.h"
+#pragma once
+
+#include "CKonto.h"
 
 
 class CGirokonto : public CKonto {
@@ -13,7 +15,7 @@ public:
 
     /// GETTER
 
-    double get_kredit() const {
+    const double &get_kredit() const {
         return kredit;
     }
 

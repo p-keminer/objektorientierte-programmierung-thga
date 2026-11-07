@@ -1,6 +1,8 @@
 #ifndef OOP_HAUSAUFGABE_CSPARBUCH_H
 #define OOP_HAUSAUFGABE_CSPARBUCH_H
 
+#pragma once
+
 #include "CKonto.h"
 
 class CSparbuch : public CKonto {
@@ -14,11 +16,11 @@ public:
 
     /// GETTER
 
-    double get_zinssatz() const {
+    const double &get_zinssatz() const {
         return zinssatz;
     }
 
-    double get_bearbeitungsgebuehr() const {
+    const static double &get_bearbeitungsgebuehr() {
         return bearbeitungsgebuehr;
     }
 

@@ -1,5 +1,4 @@
-#include <iostream>
-#include "CKonto.h"
+#include "konten/CKonto.h"
 
 #define ANZAHL_KONTEN 3
 

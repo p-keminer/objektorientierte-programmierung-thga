@@ -1,8 +1,6 @@
-#include <iostream>
-#include <random>
-#include <chrono>
-
 #include "CKonto.h"
+
+#include <iostream>
 
 using std::cout, std::endl;
 

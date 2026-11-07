@@ -1,7 +1,7 @@
 #include <cassert>
 #include <iostream>
 
-# include "../src/CKonto.h"
+#include "../src/konten/CKonto.h"
 
 using std::cout, std::endl;
 

@@ -4,25 +4,37 @@ project(OOP_Hausaufgabe)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(OOP_Hausaufgabe src/main.cpp
-        src/CKonto.cpp
-        src/CKonto.h
-        src/CSparbuch.cpp
-        src/CSparbuch.h
-        src/CGirokonto.cpp
-        src/CGirokonto.h)
+        src/konten/CKonto.cpp
+        src/konten/CKonto.h
+        src/konten/CSparbuch.cpp
+        src/konten/CSparbuch.h
+        src/konten/CGirokonto.cpp
+        src/konten/CGirokonto.h
+        src/kunden/CKunde.cpp
+        src/kunden/CKunde.h)
 
-add_executable(test_CKonto src/CKonto.cpp
-        src/CKonto.h
+add_executable(test_CKonto src/konten/CKonto.cpp
+        src/konten/CKonto.h
         tests/test_CKonto.cpp)
 
-add_executable(test_CSparbuch src/CKonto.cpp
-        src/CKonto.h
-        src/Csparbuch.cpp
-        src/CSparbuch.h
+add_executable(test_CSparbuch src/konten/CKonto.cpp
+        src/konten/CKonto.h
+        src/konten/CSparbuch.cpp
+        src/konten/CSparbuch.h
         tests/test_CSparbuch.cpp)
 
-add_executable(test_CGirokonto src/CKonto.cpp
-        src/CKonto.h
-        src/CGirokonto.cpp
-        src/CGirokonto.h
+add_executable(test_CGirokonto src/konten/CKonto.cpp
+        src/konten/CKonto.h
+        src/konten/CGirokonto.cpp
+        src/konten/CGirokonto.h
         tests/test_CGirokonto.cpp)
+
+add_executable(test_CKunde src/kunden/CKunde.cpp
+        src/kunden/CKunde.h
+        tests/test_CKunde.cpp)
+
+enable_testing()
+add_test(NAME CKonto COMMAND test_CKonto)
+add_test(NAME CSparbuch COMMAND test_CSparbuch)
+add_test(NAME CGirokonto COMMAND test_CGirokonto)
+add_test(NAME CKunde COMMAND test_CKunde)

@@ -11,7 +11,8 @@
     ├───────────────────────────────────┤
     │ - init_kontostand                 │
     │                                   │
-    │ # get_anzahl_konten               │
+    │ # get_anzahl_konten {static}      │
+    │ # set_kontostand                  │
     │                                   │
     │ + CKonto (const double&=)         │
     │ + ~CKonto                         │
@@ -35,10 +36,10 @@
     │ - zinssatz                           │          │ - kredit                             │
     │ - bearbeitungsgebuehr {static}       │          ├──────────────────────────────────────┤
     ├──────────────────────────────────────┤          │ + CGirokonto(const dbl&=,const dbl&=)│
-    │ + CSparbuch(const dbl&=,const dbl&=) │          │                                      │
+    │ + CSparbuch(const dbl&,const dbl&=)  │          │                                      │
     │                                      │          │ + get_kredit                         │
     │ + get_zinssatz                       │          │ + set_kredit                         │
-    │ + get_bearbeitungsgebuehr            │          │ + auszahlen                          │
+    │ + get_bearbeitungsgebuehr {static}   │          │ + auszahlen                          │
     │ + set_bearbeitungsgebuehr {static}   │          └──────────────────────────────────────┘
     │ + verzinsen                          │
     │ + einzahlen                          │

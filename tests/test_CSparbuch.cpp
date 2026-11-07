@@ -1,7 +1,7 @@
 #include <cassert>
 
-# include "../src/CKonto.h"
-# include "../src/CSparbuch.h"
+#include "../src/konten/CKonto.h"
+#include "../src/konten/CSparbuch.h"
 
 struct sparbuchstruct{
     CSparbuch konto1, konto2, konto3, konto4;

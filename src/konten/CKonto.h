@@ -1,6 +1,7 @@
-
 #ifndef OOP_HAUSAUFGABE_CKONTO_H
 #define OOP_HAUSAUFGABE_CKONTO_H
+
+#pragma once
 
 #include <string>
 
@@ -20,7 +21,7 @@ private:
 
 protected:
 
-    int get_anzahl_konten() const {
+    const static int &get_anzahl_konten() {
         return anzahl_konten;
     }
 
@@ -32,20 +33,21 @@ public:
     CKonto (const double &kontostand=0);
     ~CKonto();
 
+
     /// DEBUG
 
     void anzeigen() const;
 
     static void zeige_anzahl_konten();
 
+
     /// GETTER
 
-
-    double get_kontostand() const {
+    const double &get_kontostand() const {
         return kontostand;
     }
 
-    unsigned long long get_kontonummer() const {
+    const unsigned long long &get_kontonummer() const {
         return kontonummer;
     }
 
@@ -55,7 +57,6 @@ public:
     void einzahlen(const double &betrag);
 
     double auszahlen(const double &betrag);
-
 
 
     friend void zeige_gesamtbetrag(const CKonto kontos[], const int &n);
