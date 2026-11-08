@@ -40,23 +40,25 @@ Objektorientierte Programmierung.
 - [x] Von C nach C++
     - [x] Referenzen
     - [x] Streams und Namespaces 
-- [x] Objekte nd Klassen
+- [x] Objekte und Klassen
     - [x] HA 2.2
     - [x] HA 2.3
       - [x] Konstruktoren und Destruktoren
-      (- [x] Cassert und Tests)
+     (- [x] Cassert und Tests)
       - [x] Modularisierung auf Dateiebene
-      (- [x] Einstieg CMakeLists)
-      - [x] UML- Klassendiagramm
-- [ ] Klassen und Objektbeziehungen
+     (- [x] Einstieg CMakeLists)
+      - [x] UML-Klassendiagramm
+- [x] Klassen und Objektbeziehungen
     - [x] HA 3.1
         - [x] Public Vererbung
         - [x] Redefinierung und statische Methoden
-        (- [x] Automatisierte Tests)
-        (- [x] Exceptions)
-    - [ ] HA 3.2
-        - [ ] Assoziationen
-        - [ ] UML-Darstellung (Objektbeziehungen)
+       (- [x] Automatisierte Tests)
+       (- [x] Exceptions)
+    - [x] HA 3.2
+       (- [x] Analyse und Überarbeitung vorgegebenen Codes)
+        - [x] Assoziationen
+            (- [x] STL (std::vector))
+        - [x] UML-Darstellung (Objektbeziehungen)
 - [ ] Polymorphismus
     - [ ] HA 4.1
        - [ ] Virtuelle Methoden und Destruktoren
@@ -67,7 +69,8 @@ Objektorientierte Programmierung.
     - [ ] HA 5.1
        - [ ] Operatorüberladung
     - [ ] HA 5.3/5.4
-      - [ ] Templates und STL
+       - [ ] Templates
+       - [ ] STL
  ```
 ---
 
@@ -114,9 +117,30 @@ OOP/
 
 ```text
 
-    ┌───────────────────────────────────┐
-    │           CKonto                  │
-    ├───────────────────────────────────┤
+    ┌───────────────────────────────────┐                    ┌────────────────────────────────────────┐
+    │           CKunde                  │                    │           CBankkunde                   │
+    ├───────────────────────────────────┤                    ├────────────────────────────────────────┤
+    │ - nachname                        │                    │ - konten                               │
+    │ - vorname                         │                    │ - anzahl_konten                        │
+    │ - geburtsdatum                    │                    │ - ANZAHL_KONTEN=5 {static cexpr}       │
+    │ - alter                           │                    ├────────────────────────────────────────┤
+    ├───────────────────────────────────┤                    │ + CBankkunde(const str&, const dtmT&=, │
+    │ - validiere_geburtsdatum          │                    │              const str=)               │
+    │ - berechne_alter                  │                    │ + get_gesamtsaldo                      │
+    │                                   │                    │ + get_kontenliste                      │
+    │ + CKunde(const str&,const dtmT&=, │◁───────────────────│ + add_konto                            │
+    │           const str&=)            │                    │ + delete_konto                         │
+    │ + anzeigen                        │                    └────────────────────────────────────────┘
+    │ + get_name                        │                               1
+    │ + get_vorname                     │                               │
+    │ + get_alter                       │                               │
+    └───────────────────────────────────┘                               │
+                                                                        │
+                                                                        │
+                                                                        │
+    ┌───────────────────────────────────┐                               │
+    │           CKonto                  │                               │
+    ├───────────────────────────────────┤0..5───────────────────────────┘
     │ - kontonummer                     │
     │ - kontostand                      │
     │ - laufende_nummer {static}        │
@@ -134,6 +158,7 @@ OOP/
     │ + zeige_anzahl_konten {static}    │
     │ + get_kontostand                  │
     │ + get_kontonummer                 │
+    │ + set_bankkunde                   │
     │ + einzahlen                       │
     │ + auszahlen                       │
     ├───────────────────────────────────┤ ◁─────────────────┐
