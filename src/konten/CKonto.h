@@ -8,6 +8,7 @@ using std::string;
 class CBankkunde;
 
 class CKonto {
+    friend class CBankkunde;
 private:
     unsigned long long kontonummer = 1000000000;
     double kontostand;
@@ -16,6 +17,10 @@ private:
     inline static int anzahl_konten = 0;
 
     CBankkunde* bankkunde = nullptr;
+
+    /// nur für CBankkunde gedacht
+
+    void set_bankkunde(CBankkunde* bankkunde);
 
     /// INITIALISIERUNG
 
@@ -52,10 +57,6 @@ public:
     const unsigned long long &get_kontonummer() const {
         return kontonummer;
     }
-
-    /// SETTER
-
-    void set_bankkunde(CBankkunde* bankkunde);
 
     /// FUNKTIONALITÄT
 

@@ -17,18 +17,30 @@ add_executable(OOP_Hausaufgabe src/main.cpp
 
 add_executable(test_CKonto src/konten/CKonto.cpp
         src/konten/CKonto.h
+        src/kunden/CBankkunde.cpp
+        src/kunden/CBankkunde.h
+        src/kunden/CKunde.cpp
+        src/kunden/CKunde.h
         tests/test_CKonto.cpp)
 
 add_executable(test_CSparbuch src/konten/CKonto.cpp
         src/konten/CKonto.h
         src/konten/CSparbuch.cpp
         src/konten/CSparbuch.h
+        src/kunden/CBankkunde.cpp
+        src/kunden/CBankkunde.h
+        src/kunden/CKunde.cpp
+        src/kunden/CKunde.h
         tests/test_CSparbuch.cpp)
 
 add_executable(test_CGirokonto src/konten/CKonto.cpp
         src/konten/CKonto.h
         src/konten/CGirokonto.cpp
         src/konten/CGirokonto.h
+        src/kunden/CBankkunde.cpp
+        src/kunden/CBankkunde.h
+        src/kunden/CKunde.cpp
+        src/kunden/CKunde.h
         tests/test_CGirokonto.cpp)
 
 add_executable(test_CKunde src/kunden/CKunde.cpp

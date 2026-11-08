@@ -1,27 +1,27 @@
-#include "konten/CKonto.h"
+#include <iostream>
 
-#define ANZAHL_KONTEN 3
+#include "konten/CGirokonto.h"
+#include "konten/CSparbuch.h"
+#include "kunden/CBankkunde.h"
 
+using std::cout, std::endl;
 
 int main() {
 
-    CKonto konto1(0.00);
-    konto1.einzahlen(100.00);
-    konto1.anzeigen();
-    konto1.auszahlen(100.00);
-    konto1.anzeigen();
-    CKonto konto2;
-    konto2.anzeigen();
-    CKonto::zeige_anzahl_konten();
+    CBankkunde kunde1("Conrad",{1,1,1990},"Paul");
+
+    CGirokonto girokonto1(500,500);
+    CSparbuch sparbuch1(5000);
+
+    kunde1.add_konto(&girokonto1);
+    kunde1.add_konto(&sparbuch1);
+
+    cout << kunde1.get_gesamtsaldo() << endl;
+    cout << kunde1.get_anzahl_konten() << endl;
+
+    kunde1.get_kontenliste();
 
 
-    CKonto kontos[ANZAHL_KONTEN] = {100, 300, 400};
-    zeige_gesamtbetrag(kontos, ANZAHL_KONTEN);
-
-    kontos[0].anzeigen();
-    kontos[1].anzeigen();
-    kontos[2].anzeigen();
-    CKonto::zeige_anzahl_konten();
 
 
     return 0;

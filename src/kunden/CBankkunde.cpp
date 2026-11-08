@@ -16,6 +16,10 @@ CBankkunde::CBankkunde(const string &nachname, const DatumT &geburtsdatum, const
 {
 }
 
+CBankkunde::~CBankkunde() {
+    delete_all_kontos();
+}
+
 /// GETTER
 
 
@@ -40,10 +44,10 @@ void CBankkunde::add_konto(CKonto* konto) {
 
     auto it = find(konten, konto);
 
-    if (it != konten.end() ) throw std::invalid_argument("Konto schon vorhanden!");
+    if (it != konten.end()) throw std::invalid_argument("Konto schon vorhanden!");
 
-    konten.push_back(konto);
     konto->set_bankkunde(this);
+    konten.push_back(konto);
     anzahl_konten = konten.size();
 }
 
@@ -59,4 +63,8 @@ void CBankkunde::delete_konto(CKonto *konto) {
         anzahl_konten = konten.size();
     }
     else throw std::invalid_argument("Konto nicht gefunden!");
+}
+
+void CBankkunde::delete_all_kontos() {
+    while (!konten.empty()) delete_konto(konten.back());
 }

@@ -16,21 +16,20 @@ struct kundenstruct {
         {29, 2, 2000},      // Schaltjahr
         {29, 2, 2001},      // kein Schaltjahr
         {20, 1, 1899},      // vor 1900
-        {20, 13, 1899},     // 13er monat
+        {20, 13, 1901},     // 13er monat
         {31, 4, 2000}       // april hat nur 30 Tage
     };
 
 
 kundenstruct erzeuge_kunden() {
 
-    kundenstruct kunden = {
+    return kundenstruct{
         {"OK", geburtstage[0]},
         {"OK mit Vorname", geburtstage[0],"Vorname"},
         {"Schaltjahr", geburtstage[1]},
         {"Standard"}
     };
 
-    return kunden;
 
 }
 

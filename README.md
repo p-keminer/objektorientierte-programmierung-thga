@@ -126,16 +126,16 @@ OOP/
     │ - geburtsdatum                    │                    │ - ANZAHL_KONTEN=5 {static cexpr}       │
     │ - alter                           │                    ├────────────────────────────────────────┤
     ├───────────────────────────────────┤                    │ + CBankkunde(const str&, const dtmT&=, │
-    │ - validiere_geburtsdatum          │                    │              const str=)               │
-    │ - berechne_alter                  │                    │ + get_gesamtsaldo                      │
-    │                                   │                    │ + get_kontenliste                      │
-    │ + CKunde(const str&,const dtmT&=, │◁───────────────────│ + add_konto                            │
-    │           const str&=)            │                    │ + delete_konto                         │
-    │ + anzeigen                        │                    └────────────────────────────────────────┘
-    │ + get_name                        │                               1
-    │ + get_vorname                     │                               │
-    │ + get_alter                       │                               │
-    └───────────────────────────────────┘                               │
+    │ - validiere_geburtsdatum          │                    │              const str&=)              │
+    │ - berechne_alter                  │                    │ + ~CBankkunde                          │
+    │                                   │                    │ + get_anzahl_konten                    │
+    │ + CKunde(const str&,const dtmT&=, │◁───────────────────│ + get_gesamtsaldo                      │
+    │           const str&=)            │                    │ + get_kontenliste                      │
+    │ + anzeigen                        │                    │ + add_konto                            │
+    │ + get_name                        │                    │ + delete_konto                         │
+    │ + get_vorname                     │                    │ + delete_all_kontos                    │
+    │ + get_alter                       │                    └────────────────────────────────────────┘
+    └───────────────────────────────────┘                              0..1
                                                                         │
                                                                         │
                                                                         │
@@ -148,6 +148,7 @@ OOP/
     │ - anzahl_konten {static}          │
     ├───────────────────────────────────┤
     │ - init_kontostand                 │
+    │ - set_bankkunde                   │
     │                                   │
     │ # get_anzahl_konten {static}      │
     │ # set_kontostand                  │
@@ -159,7 +160,6 @@ OOP/
     │ + zeige_anzahl_konten {static}    │
     │ + get_kontostand                  │
     │ + get_kontonummer                 │
-    │ + set_bankkunde                   │
     │ + einzahlen                       │
     │ + auszahlen                       │
     ├───────────────────────────────────┤ ◁─────────────────┐

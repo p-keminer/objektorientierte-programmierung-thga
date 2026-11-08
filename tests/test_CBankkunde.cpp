@@ -26,18 +26,17 @@ DatumT geburtstage[6] = {
 
 bankkundenstruct erzeuge_kunden() {
 
-    bankkundenstruct kunden = {
+    return bankkundenstruct {
         {"OK", geburtstage[0]},
         {"OK mit Vorname", geburtstage[0],"Vorname"},
     };
 
-    return kunden;
 
 }
 
 kontenstruct erzeuge_konten() {
 
-    kontenstruct konten {
+    return kontenstruct {
         {200},
         {400},
         {},
@@ -46,7 +45,6 @@ kontenstruct erzeuge_konten() {
         {0,0}
     };
 
-    return konten;
 }
 
 void teste_add_konto() {

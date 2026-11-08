@@ -18,8 +18,9 @@ private:
 public:
 
     /// INITIALISIERUNG
-    ///
+
     CBankkunde(const string &nachname, const DatumT &geburtsdatum={1, 1, 1900}, const string &vorname="");
+    ~CBankkunde();
 
     /// GETTER
 
@@ -37,7 +38,7 @@ public:
 
     void delete_konto(CKonto* konto);
 
-
+    void delete_all_kontos();
 
 
 };

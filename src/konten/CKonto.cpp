@@ -3,6 +3,8 @@
 #include <iostream>
 #include <stdexcept>
 
+#include "../kunden/CBankkunde.h"
+
 using std::cout, std::endl;
 
 /// PRIVATE
@@ -31,6 +33,7 @@ CKonto::CKonto (const double &kontostand)
 
 CKonto::~CKonto() {
     auszahlen(kontostand);
+    if (bankkunde) bankkunde->delete_konto(this);
     anzahl_konten--;
     // cout << "\nobjekt " << kontonummer << " zerstoert\n" << endl;
 };
