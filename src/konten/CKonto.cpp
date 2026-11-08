@@ -1,6 +1,7 @@
 #include "CKonto.h"
 
 #include <iostream>
+#include <stdexcept>
 
 using std::cout, std::endl;
 
@@ -43,6 +44,13 @@ void CKonto::anzeigen() const {
 
 void CKonto::zeige_anzahl_konten() {
     cout << "Anzahl Konten: " << anzahl_konten << endl;
+}
+
+/// SETTER
+
+void CKonto::set_bankkunde(CBankkunde* bankkunde) {
+    if (this->bankkunde && bankkunde) throw std::logic_error("Konto schon einem Bankkunden zugewiesen!");
+    this->bankkunde = bankkunde;
 }
 
 /// FUNKTIONALITÄT

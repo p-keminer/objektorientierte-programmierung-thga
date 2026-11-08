@@ -1,7 +1,6 @@
 #ifndef OOP_HAUSAUFGABE_CGIROKONTO_H
 #define OOP_HAUSAUFGABE_CGIROKONTO_H
 
-#pragma once
 
 #include "CKonto.h"
 

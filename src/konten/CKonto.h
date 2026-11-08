@@ -1,11 +1,11 @@
 #ifndef OOP_HAUSAUFGABE_CKONTO_H
 #define OOP_HAUSAUFGABE_CKONTO_H
 
-#pragma once
-
 #include <string>
 
 using std::string;
+
+class CBankkunde;
 
 class CKonto {
 private:
@@ -14,6 +14,8 @@ private:
 
     inline static int laufende_nummer = 0;
     inline static int anzahl_konten = 0;
+
+    CBankkunde* bankkunde = nullptr;
 
     /// INITIALISIERUNG
 
@@ -51,6 +53,9 @@ public:
         return kontonummer;
     }
 
+    /// SETTER
+
+    void set_bankkunde(CBankkunde* bankkunde);
 
     /// FUNKTIONALITÄT
 

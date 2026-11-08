@@ -1,8 +1,6 @@
 #ifndef OOP_HAUSAUFGABE_CSPARBUCH_H
 #define OOP_HAUSAUFGABE_CSPARBUCH_H
 
-#pragma once
-
 #include "CKonto.h"
 
 class CSparbuch : public CKonto {

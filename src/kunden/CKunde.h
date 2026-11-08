@@ -1,8 +1,6 @@
 #ifndef OOP_HAUSAUFGABE_CKUNDE_H
 #define OOP_HAUSAUFGABE_CKUNDE_H
 
-#pragma once
-
 #include <string>
 
 using std::string;
