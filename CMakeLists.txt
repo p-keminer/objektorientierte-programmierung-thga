@@ -35,8 +35,21 @@ add_executable(test_CKunde src/kunden/CKunde.cpp
         src/kunden/CKunde.h
         tests/test_CKunde.cpp)
 
+add_executable(test_CBankkunde src/kunden/CBankkunde.cpp
+        src/kunden/CBankkunde.h
+        src/kunden/CKunde.cpp
+        src/kunden/CKunde.h
+        src/konten/CKonto.cpp
+        src/konten/CKonto.h
+        src/konten/CSparbuch.cpp
+        src/konten/CSparbuch.h
+        src/konten/CGirokonto.cpp
+        src/konten/CGirokonto.h
+        tests/test_CBankkunde.cpp)
+
 enable_testing()
 add_test(NAME CKonto COMMAND test_CKonto)
 add_test(NAME CSparbuch COMMAND test_CSparbuch)
 add_test(NAME CGirokonto COMMAND test_CGirokonto)
 add_test(NAME CKunde COMMAND test_CKunde)
+add_test(NAME CBankkunde COMMAND test_CBankkunde)
