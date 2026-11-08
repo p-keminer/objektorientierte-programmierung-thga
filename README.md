@@ -22,7 +22,7 @@ Objektorientierte Programmierung.
 
 
 ---
-**Stand: 7.11.2026** - In Bearbeitung
+**Stand: 8.11.2026** - In Bearbeitung
 
 </div>
 
