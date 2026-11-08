@@ -1,0 +1,13 @@
+stages:
+  - tests
+
+test_OOP:
+  stage: tests
+
+  tags:
+    - VM-LOCAL
+
+  script:
+    - cmake -S . -B cmake-build-ci -G Ninja -DCMAKE_BUILD_TYPE=Debug
+    - cmake --build cmake-build-ci
+    - ctest --test-dir cmake-build-ci --output-on-failure --no-tests=error
