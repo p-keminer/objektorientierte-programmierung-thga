@@ -43,11 +43,11 @@ Objektorientierte Programmierung.
 - [x] Objekte und Klassen
     - [x] HA 2.2
     - [x] HA 2.3
-      - [x] Konstruktoren und Destruktoren
-     (- [x] Cassert und Tests)
-      - [x] Modularisierung auf Dateiebene
-     (- [x] Einstieg CMakeLists)
-      - [x] UML-Klassendiagramm
+        - [x] Konstruktoren und Destruktoren
+       (- [x] Cassert und Tests)
+        - [x] Modularisierung auf Dateiebene
+       (- [x] Einstieg CMakeLists)
+        - [x] UML-Klassendiagramm
 - [x] Klassen und Objektbeziehungen
     - [x] HA 3.1
         - [x] Public Vererbung
@@ -57,20 +57,20 @@ Objektorientierte Programmierung.
     - [x] HA 3.2
        (- [x] Analyse und Überarbeitung vorgegebenen Codes)
         - [x] Assoziationen
-            (- [x] STL (std::vector))
+           (- [x] STL (std::vector))
         - [x] UML-Darstellung (Objektbeziehungen)
 - [ ] Polymorphismus
     - [ ] HA 4.1
-       - [ ] Virtuelle Methoden und Destruktoren
-       - [ ] Dynamisch Verwalteter Speicher
-       - [ ] Basisklassenzeiger
-       - [ ] CopyConstructor
-  - [ ] Sonstiges
+        - [ ] Virtuelle Methoden und Destruktoren
+        - [ ] Dynamisch Verwalteter Speicher
+        - [ ] Basisklassenzeiger
+        - [ ] CopyConstructor
+- [ ] Sonstiges
     - [ ] HA 5.1
-       - [ ] Operatorüberladung
+        - [ ] Operatorüberladung
     - [ ] HA 5.3/5.4
-       - [ ] Templates
-       - [ ] STL
+        - [ ] Templates
+        - [ ] STL
  ```
 ---
 
@@ -104,6 +104,7 @@ OOP/
 │   ├── test_CKunde.cpp
 │   └── test_CSparbuch.cpp
 ├── .gitignore
+├── .gitlab-ci.yml
 ├── CMakeLists.txt
 └── README.md
 ```
