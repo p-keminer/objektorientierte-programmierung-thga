@@ -1,5 +1,9 @@
 #include "CGirokonto.h"
 
+#include <iostream>
+
+using std::cout, std::endl;
+
 CGirokonto::CGirokonto(const double &kontostand, const double &kreditrahmen)
     : CKonto(kontostand)
 {
@@ -17,5 +21,8 @@ double CGirokonto::auszahlen(const double &betrag) {
     return auszahlungsbetrag;
 }
 
-
+void CGirokonto::anzeigen() const {
+    CKonto::anzeigen();
+    cout << "Kreditrahmen: " << kredit << endl;
+}
 

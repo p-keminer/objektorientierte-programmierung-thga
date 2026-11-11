@@ -24,9 +24,9 @@ public:
 
     /// FUNKTIONALITÄT
 
-    double auszahlen(const double &betrag);
+    double auszahlen(const double &betrag) override;
 
-
+    void anzeigen() const override;
 
 
 };

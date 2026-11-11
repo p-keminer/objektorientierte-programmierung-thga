@@ -22,7 +22,7 @@ Objektorientierte Programmierung.
 
 
 ---
-**Stand: 8.11.2026** - In Bearbeitung
+**Stand: 11.11.2026** - In Bearbeitung
 
 </div>
 
@@ -59,18 +59,21 @@ Objektorientierte Programmierung.
         - [x] Assoziationen
            (- [x] STL (std::vector))
         - [x] UML-Darstellung (Objektbeziehungen)
-- [ ] Polymorphismus
-    - [ ] HA 4.1
-        - [ ] Virtuelle Methoden und Destruktoren
-        - [ ] Dynamisch Verwalteter Speicher
-        - [ ] Basisklassenzeiger
-        - [ ] CopyConstructor
+- [x] Polymorphismus
+    - [x] HA 4.1
 - [ ] Sonstiges
     - [ ] HA 5.1
         - [ ] Operatorüberladung
     - [ ] HA 5.3/5.4
         - [ ] Templates
         - [ ] STL
+        
+- [ ] isolierte eigenständige Übungsaufgaben
+    - [ ] Virtuelle Methoden und Destruktoren
+        - [ ] Dynamisch Verwalteter Speicher
+        - [ ] Basisklassenzeiger
+        - [ ] Kopiekonstruktoren
+    - [ ] STL und Iteratoren
  ```
 ---
 
@@ -102,7 +105,8 @@ OOP/
 │   ├── test_CGirokonto.cpp
 │   ├── test_CKonto.cpp
 │   ├── test_CKunde.cpp
-│   └── test_CSparbuch.cpp
+│   ├── test_CSparbuch.cpp
+│   └── test_CBankkunde.cpp
 ├── .gitignore
 ├── .gitlab-ci.yml
 ├── CMakeLists.txt
@@ -134,9 +138,9 @@ OOP/
     │ + anzeigen                        │                    │ + add_konto                            │
     │ + get_name                        │                    │ + delete_konto                         │
     │ + get_vorname                     │                    │ + delete_all_kontos                    │
-    │ + get_alter                       │                    └────────────────────────────────────────┘
-    └───────────────────────────────────┘                              0..1
-                                                                        │
+    │ + get_alter                       │                    │ + get_konto                            │
+    └───────────────────────────────────┘                    └────────────────────────────────────────┘         
+                                                                       0..1
                                                                         │
                                                                         │
     ┌───────────────────────────────────┐                               │
@@ -156,12 +160,12 @@ OOP/
     │ + CKonto (const double&=)         │
     │ + ~CKonto                         │
     │                                   │
-    │ + anzeigen                        │
+    │ + anzeigen {virtual}              │
     │ + zeige_anzahl_konten {static}    │
     │ + get_kontostand                  │
     │ + get_kontonummer                 │
-    │ + einzahlen                       │
-    │ + auszahlen                       │
+    │ + einzahlen {virtual}             │
+    │ + auszahlen {virtual}             │
     ├───────────────────────────────────┤ ◁─────────────────┐
     │ + zeige_gesamtbetrag {friend}     │                   │
     └───────────────────────────────────┘                   │
@@ -178,10 +182,12 @@ OOP/
     │ + CSparbuch(const dbl&,const dbl&=)  │          │                                      │
     │                                      │          │ + get_kredit                         │
     │ + get_zinssatz                       │          │ + set_kredit                         │
-    │ + get_bearbeitungsgebuehr {static}   │          │ + auszahlen                          │
-    │ + set_bearbeitungsgebuehr {static}   │          └──────────────────────────────────────┘
-    │ + verzinsen                          │
-    │ + einzahlen                          │
+    │ + get_bearbeitungsgebuehr {static}   │          │ + auszahlen {override}               │
+    │ + set_bearbeitungsgebuehr {static}   │          │ + einzahlen {override}               │
+    │ + verzinsen                          │          │ + anzeigen {override}                │
+    │ + einzahlen {override}               │          └──────────────────────────────────────┘
+    │ + auszahlen {override}               │
+    │ + anzeigen {override}                │
     └──────────────────────────────────────┘
     
 ```

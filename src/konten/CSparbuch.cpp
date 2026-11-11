@@ -1,7 +1,9 @@
 #include "CKonto.h"
 #include "CSparbuch.h"
 
+#include <iostream>
 
+using std::cout, std::endl;
 
 /// PUBLIC
 
@@ -24,4 +26,10 @@ void CSparbuch::verzinsen() {
 
 void CSparbuch::einzahlen(const double &betrag) {
     CKonto::einzahlen(betrag-bearbeitungsgebuehr);
+}
+
+void CSparbuch::anzeigen() const {
+    CKonto::anzeigen();
+    cout << "Zinssatz: " << zinssatz << ", "
+         << "Bearbeitungsgebuehr: " << bearbeitungsgebuehr << endl;
 }

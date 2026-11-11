@@ -38,12 +38,13 @@ protected:
 
 public:
     CKonto (const double &kontostand=0);
+    //CKonto (const CKonto &anderes) = delete;
     ~CKonto();
 
 
     /// DEBUG
 
-    void anzeigen() const;
+    virtual void anzeigen() const;
 
     static void zeige_anzahl_konten();
 
@@ -60,10 +61,12 @@ public:
 
     /// FUNKTIONALITÄT
 
-    void einzahlen(const double &betrag);
+    virtual void einzahlen(const double &betrag);
 
-    double auszahlen(const double &betrag);
+    virtual double auszahlen(const double &betrag);
 
+
+    CKonto operator=(const CKonto &anderes) = delete;
 
     friend void zeige_gesamtbetrag(const CKonto kontos[], const int &n);
 };

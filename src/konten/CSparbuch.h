@@ -31,9 +31,9 @@ public:
 
     void verzinsen();
 
-    void einzahlen(const double &betrag);
+    void einzahlen(const double &betrag) override;
 
-
+    void anzeigen() const override;
 
 };
 

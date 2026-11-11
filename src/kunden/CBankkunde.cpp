@@ -1,11 +1,12 @@
 #include <stdexcept>
 #include <algorithm>
 #include <vector>
+#include <iostream>
 
 #include "CBankkunde.h"
 #include "../konten/CKonto.h"
 
-#include <iostream>
+
 
 using std::ranges::find;
 
@@ -33,6 +34,11 @@ double CBankkunde::get_gesamtsaldo() const {
 
 void CBankkunde::get_kontenliste() const {
     for (CKonto* konto : konten) konto->anzeigen();
+}
+
+CKonto &CBankkunde::get_konto(CKonto* konto) {
+    auto it = find(konten, konto);
+    return (**it);
 }
 
 /// SETTER

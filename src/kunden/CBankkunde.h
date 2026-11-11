@@ -32,6 +32,8 @@ public:
 
     void get_kontenliste() const;
 
+    CKonto &get_konto(CKonto* kontonummer);
+
     /// SETTER
 
     void add_konto(CKonto* konto);
