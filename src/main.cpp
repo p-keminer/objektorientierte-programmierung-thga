@@ -25,10 +25,5 @@ int main() {
     kunde1.get_konto(&sparbuch1).einzahlen(kunde1.get_konto(&girokonto1).auszahlen(1000));
     kunde1.get_kontenliste();
 
-
-
-
-
-
     return 0;
 }

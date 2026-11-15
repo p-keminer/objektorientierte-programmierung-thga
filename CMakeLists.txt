@@ -15,6 +15,11 @@ add_executable(OOP_Hausaufgabe src/main.cpp
         src/kunden/CBankkunde.cpp
         src/kunden/CBankkunde.h)
 
+add_executable(main_CComplex src/main_CComplex.cpp
+        src/CComplex/CComplex.cpp
+        src/CComplex/CComplex.h)
+
+
 add_executable(test_CKonto src/konten/CKonto.cpp
         src/konten/CKonto.h
         src/kunden/CBankkunde.cpp
