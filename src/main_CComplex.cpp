@@ -26,7 +26,7 @@ int main() {
 
     cout << "Zahl2 unverändert: " << zahl2 << endl;
 
-    cout << "Unärer operator- :"-zahl2 << endl;
+    cout << "Unärer operator- :" << -zahl2 << endl;
 
 
 

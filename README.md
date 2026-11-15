@@ -22,7 +22,7 @@ Objektorientierte Programmierung.
 
 
 ---
-**Stand: 11.11.2026** - In Bearbeitung
+**Stand: 15.11.2026** - In Bearbeitung
 
 </div>
 
@@ -62,8 +62,8 @@ Objektorientierte Programmierung.
 - [x] Polymorphismus
     - [x] HA 4.1
 - [ ] Sonstiges
-    - [ ] HA 5.1
-        - [ ] Operatorüberladung
+    - [x] HA 5.1
+        - [x] Operatorüberladung
     - [ ] HA 5.3/5.4
         - [ ] Templates
         - [ ] STL
@@ -86,6 +86,9 @@ Objektorientierte Programmierung.
 ```text
 OOP/
 ├── src/
+│   ├──CComplex/
+│   │   ├── CComplex.cpp
+│   │   └── CComplex.h
 │   ├── konten/
 │   │   ├── CGirokonto.cpp
 │   │   ├── CGirokonto.h
@@ -101,6 +104,7 @@ OOP/
 │   │   ├── CKunde.cpp
 │   │   └── CKunde.h
 │   └── main.cpp
+│   └── main_CComplex.cpp
 ├── tests/
 │   ├── test_CGirokonto.cpp
 │   ├── test_CKonto.cpp
