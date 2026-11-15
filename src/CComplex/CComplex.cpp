@@ -1,8 +1,6 @@
 #include "CComplex.h"
 #include <string>
 #include <cmath>
-#include <complex>
-#include <iomanip>
 #include <sstream>
 #include <stdexcept>
 
@@ -39,12 +37,10 @@ CComplex::CComplex(double x, double y, bool kartesisch)
     if (kartesisch) {
         set_real(x);
         set_imaginaer(y);
-        aktualisiere_betrag_phase();
     }
     else {
         set_betrag(x);
         set_phase(y);
-        aktualisiere_real_imaginaer();
     }
 
 }
@@ -77,7 +73,7 @@ void CComplex::set_betrag(double wert) {
 }
 
 void CComplex::set_phase(double wert) {
-    phase = wert;
+    phase = std::remainder(wert, 2 * pi);
     aktualisiere_real_imaginaer();
 }
 

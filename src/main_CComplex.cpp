@@ -24,9 +24,9 @@ int main() {
     cout << "Zahl1 - Exponentialform: "
          << zahl1.toString(0) << endl;
 
-    cout << "Zahl2 unverändert: " << zahl2 << endl;
+    cout << "Zahl2 unveraendert: " << zahl2 << endl;
 
-    cout << "Unärer operator- :" << -zahl2 << endl;
+    cout << "Unaerer operator-: " << -zahl2 << endl;
 
 
 

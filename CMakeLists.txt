@@ -3,7 +3,7 @@ project(OOP_Hausaufgabe)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(OOP_Hausaufgabe src/main.cpp
+add_executable(main src/main.cpp
         src/konten/CKonto.cpp
         src/konten/CKonto.h
         src/konten/CSparbuch.cpp
