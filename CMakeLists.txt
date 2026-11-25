@@ -33,21 +33,26 @@ endforeach()
 
 add_library(komplexe_zahlen STATIC
         src/komplexe_zahlen/CComplex.cpp
-        incl/komplexe_zahlen/CComplex.h)
+        src/komplexe_zahlen/CComplexReader.cpp
+        incl/komplexe_zahlen/CComplex.h
+        incl/komplexe_zahlen/CComplexReader.h)
 target_include_directories(komplexe_zahlen PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/incl")
 
 add_executable(main_CComplex src/komplexe_zahlen/main_CComplex.cpp)
 target_link_libraries(main_CComplex PRIVATE komplexe_zahlen)
 
-add_executable(test_CComplex tests/komplexe_zahlen/test_CComplex.cpp)
-target_link_libraries(test_CComplex PRIVATE komplexe_zahlen)
-add_test(NAME CComplex COMMAND test_CComplex)
+foreach(klasse IN ITEMS CComplex CComplexReader)
+    add_executable(test_${klasse} tests/komplexe_zahlen/test_${klasse}.cpp)
+    target_link_libraries(test_${klasse} PRIVATE komplexe_zahlen)
+    add_test(NAME ${klasse} COMMAND test_${klasse})
+endforeach()
+
 
 # Funktionstemplates
 
 add_executable(main_5_3
-        src/funktionstemplates/main_5_3.cpp
-        incl/funktionstemplates/main_5_3.h)
+        src/funktionstemplates/main_funktionstemplates.cpp
+        incl/funktionstemplates/main_funktionstemplates.h)
 
 target_include_directories(main_5_3 PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/incl")
 
@@ -56,6 +61,6 @@ add_custom_target(run_all
         COMMAND "$<TARGET_FILE:main_kontoverwaltung>"
         COMMAND "$<TARGET_FILE:main_CComplex>"
         COMMAND "$<TARGET_FILE:main_5_3>"
-        DEPENDS main_kontoverwaltung main_CComplex main_5_3
+        DEPENDS main_kontoverwaltung main_CComplex main_funktionstemplates
         VERBATIM
 )

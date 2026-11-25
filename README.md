@@ -93,9 +93,10 @@ OOP/
 │   │   └── main_kontoverwaltung.cpp
 │   ├── komplexe_zahlen/
 │   │   ├── CComplex.cpp
+│   │   ├── CComplexReader.cpp
 │   │   └── main_CComplex.cpp
 │   └── funktionstemplates/
-│       └── main_5_3.cpp
+│       └── main_funktionstemplates.cpp
 ├── incl/
 │   ├── kontoverwaltung/
 │   │   ├── konten/
@@ -108,10 +109,14 @@ OOP/
 │   │       ├── CBankkunde.h
 │   │       └── CKunde.h
 │   ├── komplexe_zahlen/
-│   │   └── CComplex.h
+│   │   ├── CComplex.h
+│   │   └── CComplexReader.h
 │   └── funktionstemplates/
-│       └── main_5_3.h
+│       └── main_funktionstemplates.h
 ├── tests/
+│   ├── komplexe_zahlen/
+│   │   ├── test_CComplex.cpp
+│   │   └── test_CComplexReader.cpp
 │   └── kontoverwaltung/
 │       ├── test_CBankkunde.cpp
 │       ├── test_CGirokonto.cpp
