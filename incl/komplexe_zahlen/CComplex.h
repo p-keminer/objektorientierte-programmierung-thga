@@ -1,16 +1,17 @@
 #ifndef OOP_HAUSAUFGABE_CCOMPLEX_H
 #define OOP_HAUSAUFGABE_CCOMPLEX_H
 
-#include <string>
 #include <cmath>
-#include <iostream>
-#include <vector>
+#include <numbers>
+#include <ostream>
+#include <string>
+
 
 
 using std::string;
 using std::hypot, std::pow, std::numbers::pi;
 using std::ostream;
-using std::vector;
+
 
 
 
@@ -118,9 +119,8 @@ public:
 };
 
 
-namespace CComplex_reader {
-    vector<CComplex> constant_reader();
-}
+
+
 
 
 

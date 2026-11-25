@@ -1,42 +1,28 @@
-#include "komplexe_zahlen/CComplex.h"
+#include "komplexe_zahlen/CComplexReader.h"
 
 #include <iostream>
+#include <sstream>
 
-using std::cout, std::endl;
-
+using std::cout;
+using std::istringstream;
 
 int main() {
+    istringstream eingabe(
+        "3+4i\n"
+        "-1-2i\n"
+        "6-8i\n"
+        "-2+0i\n"
+        "0+3i\n"
+        "3+4i\n"
+    );
 
-    CComplex zahl1(5,5), zahl2(zahl1);
-    cout << zahl1.get_betrag() << "\n"
-         << zahl1.get_phase() << "\n"
-         << zahl1.get_real() << "\n"
-         << zahl1.get_imaginaer() << "\n"
-         << zahl1.toString() << "\n"
-         << zahl1.toString(0) << "\n"
-         << zahl1
-         << endl;
+    CComplexReader reader;
+    reader.constant_reader(eingabe);
+    reader.sortiere_vektor();
 
-
-    zahl1 *= 2 + zahl2 -= 4;
-
-    cout << "Zahl1 - Kartesich: "
-         << zahl1 << endl;;
-    cout << "Zahl1 - Exponentialform: "
-         << zahl1.toString(0) << endl;
-
-    cout << "Zahl2 unveraendert: " << zahl2 << endl;
-
-    cout << "Unaerer operator-: " << -zahl2 << endl;
-
-
-     auto komplexe_zahlen = CComplex_reader::constant_reader();
-
-     for (CComplex &zahl : komplexe_zahlen) cout << zahl << endl;
-
-
-
-
+    for (const auto& zahl : reader.get_komplexe_zahlen()) {
+        cout << zahl << '\n';
+    }
 
     return 0;
 }

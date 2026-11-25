@@ -1,23 +1,21 @@
 #include "komplexe_zahlen/CComplex.h"
 
-#include <string>
 #include <cmath>
 #include <sstream>
 #include <stdexcept>
-#include <vector>
-#include <iostream>
-#include <optional>
+#include <string>
 #include <utility>
+#include <vector>
 
 
 using std::string, std::stod;
 using std::abs;
 using std::numbers::pi, std::atan2, std::sin, std::cos;
-using std::invalid_argument, std::exception;
+using std::invalid_argument;
 using std::vector;
-using std::cin, std::cout, std::endl;
-using std::optional;
 using std::pair;
+
+
 
 
 
@@ -26,7 +24,6 @@ using std::pair;
 namespace {
 
     vector<char> finde_vorzeichen(const string &eingabe) {
-
         size_t index1 = eingabe.find_first_of("+-");
         size_t index2 = eingabe.find_last_of("+-");
         char vorzeichen1 = '\0';
@@ -54,7 +51,6 @@ namespace {
     }
 
     vector<string> split_string(string aufzuteilen, char trennzeichen) {
-
         vector<string> aufgeteilt;
         size_t index = aufzuteilen.rfind(trennzeichen);
 
@@ -67,10 +63,6 @@ namespace {
         return {stod(*aufgeteilt.begin()),stod(aufgeteilt.back())};
     }
 
-    bool pruefe_abbruch(const string &eingabe) {
-        return eingabe == "0+0i";
-    }
-
     pair<double,double> string_zu_double(const string &eingabe) {
         auto vorzeichen = finde_vorzeichen(eingabe);
         char trennzeichen = validiere_trennzeichen(vorzeichen);
@@ -79,36 +71,7 @@ namespace {
         return umgewandelt;
     }
 
-    optional<CComplex> read() {
-        string eingabe;
-        cout << "Komplexe Zahl eingeben: " << endl;
-        if (!(cin >> eingabe)) return std::nullopt;
-        if (pruefe_abbruch(eingabe)) return std::nullopt;
-        if (!eingabe.ends_with('i')) throw invalid_argument("Keine Gueltige Eingabe - Gueltig: -5+5i, 5-5i oder -5-5i !");
-        CComplex zahl(eingabe);
-        return zahl;
-    }
-
 }
-
-
-vector<CComplex> CComplex_reader::constant_reader() {
-
-    vector<CComplex> komplexe_zahlen;
-    while (true) {
-        try {
-            auto zahl = read();
-            if (!zahl.has_value()) return komplexe_zahlen;
-            komplexe_zahlen.push_back(*zahl);
-            cout << "Komplexe Zahl hinzugefuegt: " << komplexe_zahlen.back() << endl;
-        }catch (const exception &e) {
-            cout << e.what() << endl;
-        }
-    }
-}
-
-
-
 
 
 /// CComplex
@@ -197,7 +160,6 @@ string CComplex::get_imag_string() const {
 }
 
 string CComplex::toString(const bool kartesisch) const {
-
     std::ostringstream stream;
     if (kartesisch) {
         stream << real << get_imag_string();
@@ -280,7 +242,6 @@ CComplex CComplex::operator-() const {
         -imaginaer
     };
 }
-
 
 
 
