@@ -39,6 +39,10 @@ target_include_directories(komplexe_zahlen PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/i
 add_executable(main_CComplex src/komplexe_zahlen/main_CComplex.cpp)
 target_link_libraries(main_CComplex PRIVATE komplexe_zahlen)
 
+add_executable(test_CComplex tests/komplexe_zahlen/test_CComplex.cpp)
+target_link_libraries(test_CComplex PRIVATE komplexe_zahlen)
+add_test(NAME CComplex COMMAND test_CComplex)
+
 # Funktionstemplates
 
 add_executable(main_5_3
