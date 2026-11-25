@@ -4,10 +4,14 @@
 #include <string>
 #include <cmath>
 #include <iostream>
+#include <vector>
+
 
 using std::string;
 using std::hypot, std::pow, std::numbers::pi;
 using std::ostream;
+using std::vector;
+
 
 
 class CComplex {
@@ -38,7 +42,10 @@ private:
     void aktualisiere_real_imaginaer();
 
 
+
 public:
+    explicit CComplex(const string& eingabe);
+
     CComplex(double x, double y, bool kartesisch=true);
 
     CComplex(double anderes);
@@ -109,6 +116,12 @@ public:
     CComplex operator-() const;
 
 };
+
+
+namespace CComplex_reader {
+    vector<CComplex> constant_reader();
+}
+
 
 
 

@@ -1,13 +1,117 @@
 #include "komplexe_zahlen/CComplex.h"
+
 #include <string>
 #include <cmath>
 #include <sstream>
 #include <stdexcept>
+#include <vector>
+#include <iostream>
+#include <optional>
+#include <utility>
 
-using std::string;
+
+using std::string, std::stod;
 using std::abs;
 using std::numbers::pi, std::atan2, std::sin, std::cos;
+using std::invalid_argument, std::exception;
+using std::vector;
+using std::cin, std::cout, std::endl;
+using std::optional;
+using std::pair;
 
+
+
+/// Helfer
+
+namespace {
+
+    vector<char> finde_vorzeichen(const string &eingabe) {
+
+        size_t index1 = eingabe.find_first_of("+-");
+        size_t index2 = eingabe.find_last_of("+-");
+        char vorzeichen1 = '\0';
+        char vorzeichen2 = '\0';
+
+        if (index1 != string::npos) vorzeichen1 = eingabe[index1];
+        else throw invalid_argument("Keine Gueltige Eingabe - Gueltig: -5+5i, 5-5i oder -5-5i !");
+
+        vector<char> vorzeichen;
+        if (index2 != index1) {
+            if (index1) throw invalid_argument("Operatoren an ungueltiger Position!");
+            vorzeichen2 = eingabe[index2];
+            if (vorzeichen1 == '+') throw invalid_argument("Kein + vor oder nach dem Realteil benoetigt!");
+            if (eingabe.find_first_of("+-", index1+1) != index2) throw invalid_argument("Zu viele Operatoren eingegeben!");
+            vorzeichen.push_back(vorzeichen1);
+            vorzeichen.push_back(vorzeichen2);
+            return vorzeichen;
+        }
+        vorzeichen.push_back(vorzeichen1);
+        return vorzeichen;
+    }
+
+    const char validiere_trennzeichen(vector<char> vorzeichen) {
+        return vorzeichen.size() > 1 ? *(vorzeichen.begin()+1) : *vorzeichen.begin();
+    }
+
+    vector<string> split_string(string aufzuteilen, char trennzeichen) {
+
+        vector<string> aufgeteilt;
+        size_t index = aufzuteilen.rfind(trennzeichen);
+
+        aufgeteilt.push_back(aufzuteilen.substr(0, index));
+        aufgeteilt.push_back(aufzuteilen.substr(index + 1));
+        return aufgeteilt;
+    }
+
+    pair<double, double> umwandeln(vector<string> aufgeteilt) {
+        return {stod(*aufgeteilt.begin()),stod(aufgeteilt.back())};
+    }
+
+    bool pruefe_abbruch(const string &eingabe) {
+        return eingabe == "0+0i";
+    }
+
+    pair<double,double> string_zu_double(const string &eingabe) {
+        auto vorzeichen = finde_vorzeichen(eingabe);
+        char trennzeichen = validiere_trennzeichen(vorzeichen);
+        auto umgewandelt = umwandeln(split_string(eingabe, trennzeichen));
+        if (trennzeichen == '-') umgewandelt.second *= -1;
+        return umgewandelt;
+    }
+
+    optional<CComplex> read() {
+        string eingabe;
+        cout << "Komplexe Zahl eingeben: " << endl;
+        if (!(cin >> eingabe)) return std::nullopt;
+        if (pruefe_abbruch(eingabe)) return std::nullopt;
+        if (!eingabe.ends_with('i')) throw invalid_argument("Keine Gueltige Eingabe - Gueltig: -5+5i, 5-5i oder -5-5i !");
+        CComplex zahl(eingabe);
+        return zahl;
+    }
+
+}
+
+
+vector<CComplex> CComplex_reader::constant_reader() {
+
+    vector<CComplex> komplexe_zahlen;
+    while (true) {
+        try {
+            auto zahl = read();
+            if (!zahl.has_value()) return komplexe_zahlen;
+            komplexe_zahlen.push_back(*zahl);
+            cout << "Komplexe Zahl hinzugefuegt: " << komplexe_zahlen.back() << endl;
+        }catch (const exception &e) {
+            cout << e.what() << endl;
+        }
+    }
+}
+
+
+
+
+
+/// CComplex
 
 void CComplex::aktualisiere_betrag_phase() {
     betrag = berechne_betrag();
@@ -19,15 +123,19 @@ void CComplex::aktualisiere_real_imaginaer() {
     imaginaer = betrag * sin(phase);
 }
 
-/* könnte beide aufgaben übernehmen
 
-CComplex::CComplex(double x=0, double y=0, bool kartesissch=true)
-:real(x), imaginaer(y)
+
+/// String Konstruktor
+
+CComplex::CComplex(const string& eingabe)
+    :real(0), imaginaer(0), betrag(0), phase(0)
 {
-aktualisiere_betrag_phase();
+    auto werte = string_zu_double(eingabe);
+    real = werte.first;
+    imaginaer = werte.second;
+    aktualisiere_betrag_phase();
 }
 
-*/
 
 /// Normaler Konstruktor
 
@@ -80,7 +188,7 @@ void CComplex::set_phase(double wert) {
 string CComplex::get_imag_string() const {
     std::ostringstream stream;
     if (imaginaer >= 0) {
-        stream << " + " << imaginaer << " i" ;
+        stream << " + " << abs(imaginaer) << " i" ;
     }
     else {
         stream << " - " << abs(imaginaer) << " i" ;

@@ -4,6 +4,7 @@
 
 using std::cout, std::endl;
 
+
 int main() {
 
     CComplex zahl1(5,5), zahl2(zahl1);
@@ -28,6 +29,10 @@ int main() {
 
     cout << "Unaerer operator-: " << -zahl2 << endl;
 
+
+     auto komplexe_zahlen = CComplex_reader::constant_reader();
+
+     for (CComplex &zahl : komplexe_zahlen) cout << zahl << endl;
 
 
 
