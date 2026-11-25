@@ -19,6 +19,8 @@ add_executable(main_CComplex src/main_CComplex.cpp
         src/CComplex/CComplex.cpp
         src/CComplex/CComplex.h)
 
+add_executable(main_5_3 src/main_5_3.cpp
+        src/main_5_3.h)
 
 add_executable(test_CKonto src/konten/CKonto.cpp
         src/konten/CKonto.h
@@ -63,6 +65,8 @@ add_executable(test_CBankkunde src/kunden/CBankkunde.cpp
         src/konten/CGirokonto.cpp
         src/konten/CGirokonto.h
         tests/test_CBankkunde.cpp)
+
+
 
 enable_testing()
 add_test(NAME CKonto COMMAND test_CKonto)
