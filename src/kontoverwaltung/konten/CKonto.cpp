@@ -1,9 +1,9 @@
-#include "CKonto.h"
+#include "kontoverwaltung/konten/CKonto.h"
 
 #include <iostream>
 #include <stdexcept>
 
-#include "../kunden/CBankkunde.h"
+#include "kontoverwaltung/kunden/CBankkunde.h"
 
 using std::cout, std::endl;
 

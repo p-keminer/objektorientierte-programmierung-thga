@@ -1,4 +1,4 @@
-#include "CGirokonto.h"
+#include "kontoverwaltung/konten/CGirokonto.h"
 
 #include <iostream>
 

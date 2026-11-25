@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
 
-#include "konten/CGirokonto.h"
-#include "konten/CSparbuch.h"
-#include "kunden/CBankkunde.h"
+#include "kontoverwaltung/konten/CGirokonto.h"
+#include "kontoverwaltung/konten/CSparbuch.h"
+#include "kontoverwaltung/kunden/CBankkunde.h"
 
 
 using std::cout, std::endl;

@@ -1,64 +1,65 @@
-#ifndef OOP_HAUSAUFGABE_MAIN_5_3_H
-#define OOP_HAUSAUFGABE_MAIN_5_3_H
-
 #include <iostream>
-#include <vector>
-#include <array>
-#include <iomanip>
-#include <list>
-#include <iterator>
-#include <stdexcept>
+
+#include "funktionstemplates/main_5_3.h"
 
 
-/// Strukturen
 
-/// Struktur 1D
+int main() {
 
-template<typename T>
-struct data {
-    T iterator;
-    int index;
-};
+    auto container = erzeuge_1D_container();
+    auto container2 = erzeuge_2D_container();
 
-/// Strukturen 2D
+    /// Suche 1D
 
-struct data2 {
-    int index_aussen;
-    int index_innen;
-};
+    std::cout << "\n--- Suche 1D ---\n\n";
 
-template<typename T>
-struct data3 {
-    T iterator;
-    int index_aussen;
-    int index_innen;
-};
+    ausgabe(container.array, 4);
+    ausgabe(container.vektor, 2);
+    ausgabe(container.stl_array, 5);
+    ausgabe(container.liste, 1);
+    ausgabe(container.dezimalzahlen, 3.5);
+    ausgabe(container.texte, "DNS");
+    ausgabe(container.negative_zahlen, -5);
+    ausgabe(container.negative_zahlen, 0);
+    ausgabe(container.duplikate, 3);
+    ausgabe(container.einzelwert, 42);
+    ausgabe(container.liste, 35);
+    ausgabe(container.leer, 5);
+    ausgabe(container.einzelwert, 99);
 
-/// Struktur Testdaten
+    /// Suche 2D
 
-struct erzeugen1 {
-    int array[5];
-    std::vector<int> vektor;
-    std::array<int, 8> stl_array;
-    std::list<int> liste;
-    std::vector<double> dezimalzahlen;
-    std::list<std::string> texte;
-    std::vector<int> negative_zahlen;
-    std::vector<int> duplikate;
-    std::vector<int> leer;
-    std::array<int, 1> einzelwert;
-};
+    std::cout << "\n--- Suche 2D ---\n\n";
 
-struct erzeugen2 {
-    int array_2D[3][3];
-    std::vector<std::vector<int>> vektor_2D;
-    std::list<std::list<int>> liste_2D;
-    std::vector<std::list<double>> vektor_liste;
-    std::list<std::vector<int>> liste_vektor;
-    std::array<std::array<int, 3>, 2> stl_array_2D;
-    std::vector<std::vector<int>> leer;
-};
+    ausgabe_2D(container2.array_2D, 6);
+    ausgabe_2D(container2.array_2D, 1);
+    ausgabe_2D(container2.vektor_2D, 90);
+    ausgabe_2D(container2.liste_2D, 1);
+    ausgabe_2D(container2.vektor_liste, 5.5);
+    ausgabe_2D(container2.liste_vektor, 14);
+    ausgabe_2D(container2.stl_array_2D, 600);
+    ausgabe_2D(container2.vektor_2D, 999);
+    ausgabe_2D(container2.leer, 5);
 
+    /// Ersetzen
+
+    std::cout << "\n--- Ersetzen ---\n\n";
+
+    std::cout << "Array: " << ersetze(container.array, 2, 99) << '\n'
+              << "Vektor: " << ersetze(container.vektor, 2, 99) << '\n'
+              << "STL-Array: " << ersetze(container.stl_array, 2, 99) << '\n'
+              << "Liste: " << ersetze(container.liste, 2, 99) << '\n'
+              << "Dezimalzahlen: " << ersetze(container.dezimalzahlen, 2.5, 9.5) << '\n'
+              << "Texte: " << ersetze(container.texte,"SSH","HTTPS") << '\n'
+              << "Negative Zahlen: " << ersetze(container.negative_zahlen, -5, 99) << '\n'
+              << "Duplikate: " << ersetze(container.duplikate, 3, 99) << '\n'
+              << "Leerer Container: " << ersetze(container.leer, 5, 99) << '\n'
+              << "Einzelwert: " << ersetze(container.einzelwert, 42, 99) << '\n'
+              << "Nicht vorhandener Wert: " << ersetze(container.vektor, 500, 99)
+              << std::endl;
+
+    return 0;
+}
 
 
 /// Suchfunktionen
@@ -252,5 +253,3 @@ erzeugen2 erzeuge_2D_container() {
         {}
     };
 }
-
-#endif //OOP_HAUSAUFGABE_MAIN_5_3_H

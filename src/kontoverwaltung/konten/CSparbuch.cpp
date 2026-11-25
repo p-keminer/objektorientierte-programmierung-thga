@@ -1,5 +1,5 @@
-#include "CKonto.h"
-#include "CSparbuch.h"
+#include "kontoverwaltung/konten/CKonto.h"
+#include "kontoverwaltung/konten/CSparbuch.h"
 
 #include <iostream>
 

@@ -1,7 +1,7 @@
 #include <cassert>
 #include <iostream>
 
-#include "../src/konten/CKonto.h"
+#include "kontoverwaltung/konten/CKonto.h"
 
 using std::cout, std::endl;
 

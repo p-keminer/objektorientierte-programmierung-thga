@@ -1,6 +1,6 @@
-#include "../src/kunden/CBankkunde.h"
-#include "../src/konten/CGirokonto.h"
-#include "../src/konten/CSparbuch.h"
+#include "kontoverwaltung/kunden/CBankkunde.h"
+#include "kontoverwaltung/konten/CGirokonto.h"
+#include "kontoverwaltung/konten/CSparbuch.h"
 
 #include <cassert>
 #include <stdexcept>

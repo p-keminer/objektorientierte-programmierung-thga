@@ -1,4 +1,4 @@
-#include "CKunde.h"
+#include "kontoverwaltung/kunden/CKunde.h"
 
 #include <ctime>
 #include <stdexcept>

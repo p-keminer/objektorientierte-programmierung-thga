@@ -2,7 +2,7 @@
 #define OOP_HAUSAUFGABE_CGIROKONTO_H
 
 
-#include "CKonto.h"
+#include "kontoverwaltung/konten/CKonto.h"
 
 
 class CGirokonto : public CKonto {

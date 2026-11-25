@@ -1,7 +1,7 @@
 #include <cassert>
 
-#include "../src/konten/CKonto.h"
-#include "../src/konten/CGirokonto.h"
+#include "kontoverwaltung/konten/CKonto.h"
+#include "kontoverwaltung/konten/CGirokonto.h"
 
 
 struct girokontostruct{

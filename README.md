@@ -14,67 +14,63 @@ Objektorientierte Programmierung.
 ### **Studentisches Lernprojekt - Keine offizielle Hochschulvorlage, oder Musterlösung!**
 
 
-
-[![Checkliste](https://img.shields.io/badge/Checkliste-24292f?style=for-the-badge)](#checkliste)
+[![Einstieg](https://img.shields.io/badge/Einstieg-24292f?style=for-the-badge)](#einstieg)
 [![Struktur](https://img.shields.io/badge/Struktur-24292f?style=for-the-badge)](#struktur)
 [![UML-Klassendiagramm](https://img.shields.io/badge/UML_Klassendiagramm-24292f?style=for-the-badge)](#uml)
 
 
 
 ---
-**Stand: 15.11.2026** - In Bearbeitung
+**Stand: 25.11.2026** - In Bearbeitung
 
 </div>
 
 ---
 
-<a name="checkliste"></a>
+<a name="einstieg"></a>
 
-## Checkliste
+## Einstieg
 
 ---
 
+### Voraussetzungen
+
+---
+| Werkzeug | Anforderung | Lokales Setup unter Windows                  |
+| --- | --- |----------------------------------------------|
+| C++-Compiler | Unterstützung für `C++20` | MinGW-w64 mit GCC 13.1.0 aus Qt-Installation |
+| CMake | Version `4.2` oder neuer | CMake 4.3.1 aus `CLion`                      |
+| Ninja | Build mit `-G Ninja` | Ninja 1.13.2 aus `CLion`                     |
+| CTest | Ausführen der automatisierten Tests | In `CMake` enthalten                         |
 
 
-```text
-- [x] Von C nach C++
-    - [x] Referenzen
-    - [x] Streams und Namespaces 
-- [x] Objekte und Klassen
-    - [x] HA 2.2
-    - [x] HA 2.3
-        - [x] Konstruktoren und Destruktoren
-       (- [x] Cassert und Tests)
-        - [x] Modularisierung auf Dateiebene
-       (- [x] Einstieg CMakeLists)
-        - [x] UML-Klassendiagramm
-- [x] Klassen und Objektbeziehungen
-    - [x] HA 3.1
-        - [x] Public Vererbung
-        - [x] Redefinierung und statische Methoden
-       (- [x] Automatisierte Tests)
-       (- [x] Exceptions)
-    - [x] HA 3.2
-       (- [x] Analyse und Überarbeitung vorgegebenen Codes)
-        - [x] Assoziationen
-           (- [x] STL (std::vector))
-        - [x] UML-Darstellung (Objektbeziehungen)
-- [x] Polymorphismus
-    - [x] HA 4.1
-- [ ] Sonstiges
-    - [x] HA 5.1
-        - [x] Operatorüberladung
-    - [ ] HA 5.3/5.4
-        - [ ] Templates
-        - [ ] STL
-        
-- [ ] isolierte eigenständige Übungsaufgaben
-    - [ ] Virtuelle Methoden und Destruktoren
-        - [ ] Dynamisch Verwalteter Speicher
-        - [ ] Basisklassenzeiger
-        - [ ] Kopiekonstruktoren
-    - [ ] STL und Iteratoren
- ```
+>Qt liefert in diesem Setup den MinGW-Compiler.
+>Das Projekt verwendet bisher keine Qt-Bibliotheken und baut auch mit
+>einem anderen C++20-fähigen Compiler.
+
+---
+
+### Bauen und Testen
+
+```shell
+ # CMake, CTest und MinGW in PowerShell verfügbar machen
+ $env:Path = "$env:LOCALAPPDATA\Programs\CLion\bin\cmake\win\x64\bin;C:\Qt\Tools\mingw1310_64\bin;$env:Path"
+
+ # Hauptprogramme und Testprogramme kompilieren
+ cmake --build cmake-build-debug
+
+ # Alle registrierten Tests ausführen
+ ctest --test-dir cmake-build-debug --output-on-failure --no-tests=error
+
+ # Hauptprogramme starten
+ $env:Path = "$env:LOCALAPPDATA\Programs\CLion\bin\cmake\win\x64\bin;C:\Qt\Tools\mingw1310_64\bin;$env:Path"
+ cmake --build cmake-build-debug --target run_all
+
+ # Isolierte Tests durchführen (CBankkunde)
+ ctest --test-dir cmake-build-debug -R '^CBankkunde$' --output-on-failure
+
+```
+
 ---
 
 <a name="struktur"></a>
@@ -86,41 +82,53 @@ Objektorientierte Programmierung.
 ```text
 OOP/
 ├── src/
-│   ├──CComplex/
+│   ├── kontoverwaltung/
+│   │   ├── konten/
+│   │   │   ├── CGirokonto.cpp
+│   │   │   ├── CKonto.cpp
+│   │   │   └── CSparbuch.cpp
+│   │   ├── kunden/
+│   │   │   ├── CBankkunde.cpp
+│   │   │   └── CKunde.cpp
+│   │   └── main_kontoverwaltung.cpp
+│   ├── komplexe_zahlen/
 │   │   ├── CComplex.cpp
+│   │   └── main_CComplex.cpp
+│   └── funktionstemplates/
+│       └── main_5_3.cpp
+├── incl/
+│   ├── kontoverwaltung/
+│   │   ├── konten/
+│   │   │   ├── CGirokonto.h
+│   │   │   ├── CKonto.h
+│   │   │   └── CSparbuch.h
+│   │   └── kunden/
+│   │       ├── originale/
+│   │       │   └── CKunde.h
+│   │       ├── CBankkunde.h
+│   │       └── CKunde.h
+│   ├── komplexe_zahlen/
 │   │   └── CComplex.h
-│   ├── konten/
-│   │   ├── CGirokonto.cpp
-│   │   ├── CGirokonto.h
-│   │   ├── CKonto.cpp
-│   │   ├── CKonto.h
-│   │   ├── CSparbuch.cpp
-│   │   └── CSparbuch.h
-│   ├── kunden/
-│   │   ├── originale/
-│   │   │   └── CKunde.h
-│   │   ├── CBankkunde.cpp
-│   │   ├── CBankkunde.h
-│   │   ├── CKunde.cpp
-│   │   └── CKunde.h
-│   └── main.cpp
-│   └── main_CComplex.cpp
+│   └── funktionstemplates/
+│       └── main_5_3.h
 ├── tests/
-│   ├── test_CGirokonto.cpp
-│   ├── test_CKonto.cpp
-│   ├── test_CKunde.cpp
-│   ├── test_CSparbuch.cpp
-│   └── test_CBankkunde.cpp
+│   └── kontoverwaltung/
+│       ├── test_CBankkunde.cpp
+│       ├── test_CGirokonto.cpp
+│       ├── test_CKonto.cpp
+│       ├── test_CKunde.cpp
+│       └── test_CSparbuch.cpp
 ├── .gitignore
 ├── .gitlab-ci.yml
 ├── CMakeLists.txt
 └── README.md
 ```
+
 ---
 
 <a name="uml"></a>
 
-## UML-Klassendiagramm
+## UML-Klassendiagramm Kontoverwaltung
 
 ---
 

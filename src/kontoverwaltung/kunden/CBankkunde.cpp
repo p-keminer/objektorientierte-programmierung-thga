@@ -3,8 +3,8 @@
 #include <vector>
 #include <iostream>
 
-#include "CBankkunde.h"
-#include "../konten/CKonto.h"
+#include "kontoverwaltung/kunden/CBankkunde.h"
+#include "kontoverwaltung/konten/CKonto.h"
 
 
 

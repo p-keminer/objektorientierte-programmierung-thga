@@ -1,7 +1,7 @@
 #ifndef OOP_HAUSAUFGABE_CSPARBUCH_H
 #define OOP_HAUSAUFGABE_CSPARBUCH_H
 
-#include "CKonto.h"
+#include "kontoverwaltung/konten/CKonto.h"
 
 class CSparbuch : public CKonto {
 private:

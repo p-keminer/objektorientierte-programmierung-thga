@@ -1,4 +1,4 @@
-#include "../src/kunden/CKunde.h"
+#include "kontoverwaltung/kunden/CKunde.h"
 
 #include <cassert>
 #include <stdexcept>

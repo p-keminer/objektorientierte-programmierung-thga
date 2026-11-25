@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "CKunde.h"
+#include "kontoverwaltung/kunden/CKunde.h"
 
 using std::vector;
 
