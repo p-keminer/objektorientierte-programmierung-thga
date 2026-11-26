@@ -50,17 +50,17 @@ endforeach()
 
 # Funktionstemplates
 
-add_executable(main_5_3
+add_executable(main_funktionstemplates
         src/funktionstemplates/main_funktionstemplates.cpp
         incl/funktionstemplates/main_funktionstemplates.h)
 
-target_include_directories(main_5_3 PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/incl")
+target_include_directories(main_funktionstemplates PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/incl")
 
 
 add_custom_target(run_all
         COMMAND "$<TARGET_FILE:main_kontoverwaltung>"
         COMMAND "$<TARGET_FILE:main_CComplex>"
-        COMMAND "$<TARGET_FILE:main_5_3>"
+        COMMAND "$<TARGET_FILE:main_funktionstemplates>"
         DEPENDS main_kontoverwaltung main_CComplex main_funktionstemplates
         VERBATIM
 )
