@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# OOP
+# Objektorientierte Programmierung
 
 ---
 
@@ -133,80 +133,150 @@ OOP/
 
 <a name="uml"></a>
 
+## UML-Klassendiagramm Komplexe Zahlen
+
+---
+
+```mermaid
+classDiagram
+    direction LR
+
+    class CComplexReader {
+        -vector~CComplex~ komplexe_zahlen
+        +get_komplexe_zahlen() vector~CComplex~&
+        +constant_reader(istream& stream) void
+        +finde_minmax() Iteratorpaar
+        +finde_kleinstes_element() Iterator
+        +finde_groesstes_element() Iterator
+        +finde_komplexe_zahl(const CComplex& zahl) Iterator
+        +finde_komplexe_zahl(double real, double imaginaer) Iterator
+        +finde_komplexe_zahl(const string& zahl) Iterator
+        +sortiere_vektor(bool aufsteigend) void
+        +verschiebe_komplexe_zahlen() vector~CComplex~
+    }
+
+    class CComplex {
+        -double real
+        -double imaginaer
+        -double betrag
+        -double phase
+        -standardisiere(double zahl, short nachkommastellen) double
+        -get_imag_string() string
+        -berechne_betrag() double
+        -berechne_phase() double
+        -aktualisiere_betrag_phase() void
+        -aktualisiere_real_imaginaer() void
+        +CComplex(const string& eingabe)
+        +CComplex(double x, double y, bool kartesisch)
+        +CComplex(double anderes)
+        +get_real(short nachkommastellen) double
+        +get_imaginaer(short nachkommastellen) double
+        +get_betrag(short nachkommastellen) double
+        +get_phase(short nachkommastellen) double
+        +gradmaß(double bogenmaß) double
+        +bogenmaß(double gradmaß) double
+        +set_real(double wert) void
+        +set_imaginaer(double wert) void
+        +set_betrag(double wert) void
+        +set_phase(double wert) void
+        +toString(bool kartesisch) string
+        +operator+=(const CComplex& rechts) CComplex&
+        +operator-=(const CComplex& rechts) CComplex&
+        +operator*=(const CComplex& rechts) CComplex&
+        +operator/=(const CComplex& rechts) CComplex&
+        +operator-() CComplex
+    }
+
+    CComplexReader "0..1" *-- "0..*" CComplex : speichert
+
+    note for CComplex "Freie friend-Funktionen<br/>Binäre Rechenoperatoren, Vergleiche und Stream-Ausgabe"
+```
+
+---
+
 ## UML-Klassendiagramm Kontoverwaltung
 
 ---
 
-```text
+```mermaid
+classDiagram
+    direction TB
 
-    ┌───────────────────────────────────┐                    ┌────────────────────────────────────────┐
-    │           CKunde                  │                    │           CBankkunde                   │
-    ├───────────────────────────────────┤                    ├────────────────────────────────────────┤
-    │ - nachname                        │                    │ - konten                               │
-    │ - vorname                         │                    │ - anzahl_konten                        │
-    │ - geburtsdatum                    │                    │ - ANZAHL_KONTEN=5 {static cexpr}       │
-    │ - alter                           │                    ├────────────────────────────────────────┤
-    ├───────────────────────────────────┤                    │ + CBankkunde(const str&, const dtmT&=, │
-    │ - validiere_geburtsdatum          │                    │              const str&=)              │
-    │ - berechne_alter                  │                    │ + ~CBankkunde                          │
-    │                                   │                    │ + get_anzahl_konten                    │
-    │ + CKunde(const str&,const dtmT&=, │◁───────────────────│ + get_gesamtsaldo                      │
-    │           const str&=)            │                    │ + get_kontenliste                      │
-    │ + anzeigen                        │                    │ + add_konto                            │
-    │ + get_name                        │                    │ + delete_konto                         │
-    │ + get_vorname                     │                    │ + delete_all_kontos                    │
-    │ + get_alter                       │                    │ + get_konto                            │
-    └───────────────────────────────────┘                    └────────────────────────────────────────┘         
-                                                                       0..1
-                                                                        │
-                                                                        │
-    ┌───────────────────────────────────┐                               │
-    │           CKonto                  │                               │
-    ├───────────────────────────────────┤0..5───────────────────────────┘
-    │ - kontonummer                     │
-    │ - kontostand                      │
-    │ - laufende_nummer {static}        │
-    │ - anzahl_konten {static}          │
-    ├───────────────────────────────────┤
-    │ - init_kontostand                 │
-    │ - set_bankkunde                   │
-    │                                   │
-    │ # get_anzahl_konten {static}      │
-    │ # set_kontostand                  │
-    │                                   │
-    │ + CKonto (const double&=)         │
-    │ + ~CKonto                         │
-    │                                   │
-    │ + anzeigen {virtual}              │
-    │ + zeige_anzahl_konten {static}    │
-    │ + get_kontostand                  │
-    │ + get_kontonummer                 │
-    │ + einzahlen {virtual}             │
-    │ + auszahlen {virtual}             │
-    ├───────────────────────────────────┤ ◁─────────────────┐
-    │ + zeige_gesamtbetrag {friend}     │                   │
-    └───────────────────────────────────┘                   │
-        △                                                   │
-        │                                                   │
-        │                                                   │
-        │                                                   │
-    ┌──────────────────────────────────────┐          ┌──────────────────────────────────────┐  
-    │           CSparbuch                  │          │           CGirokonto                 │
-    ├──────────────────────────────────────┤          ├──────────────────────────────────────┤
-    │ - zinssatz                           │          │ - kredit                             │
-    │ - bearbeitungsgebuehr {static}       │          ├──────────────────────────────────────┤
-    ├──────────────────────────────────────┤          │ + CGirokonto(const dbl&=,const dbl&=)│
-    │ + CSparbuch(const dbl&,const dbl&=)  │          │                                      │
-    │                                      │          │ + get_kredit                         │
-    │ + get_zinssatz                       │          │ + set_kredit                         │
-    │ + get_bearbeitungsgebuehr {static}   │          │ + auszahlen {override}               │
-    │ + set_bearbeitungsgebuehr {static}   │          │ + einzahlen {override}               │
-    │ + verzinsen                          │          │ + anzeigen {override}                │
-    │ + einzahlen {override}               │          └──────────────────────────────────────┘
-    │ + auszahlen {override}               │
-    │ + anzeigen {override}                │
-    └──────────────────────────────────────┘
-    
+    class CKunde {
+        -string nachname
+        -string vorname
+        -DatumT geburtsdatum
+        -short alter
+        -validiere_geburtsdatum(DatumT datum) bool
+        -berechne_alter() void
+        +CKunde(string nachname, DatumT geburtsdatum, string vorname)
+        +anzeigen() string
+        +get_name() const string&
+        +get_vorname() const string&
+        +get_alter() const short&
+    }
+
+    class CBankkunde {
+        -vector~CKonto*~ konten
+        -short anzahl_konten
+        -short ANZAHL_KONTEN = 5$
+        +CBankkunde(string nachname, DatumT geburtsdatum, string vorname)
+        +~CBankkunde()
+        +get_anzahl_konten() const short&
+        +get_gesamtsaldo() double
+        +get_kontenliste() void
+        +get_konto(CKonto* konto) CKonto&
+        +add_konto(CKonto* konto) void
+        +delete_konto(CKonto* konto) void
+        +delete_all_kontos() void
+    }
+
+    class CKonto {
+        -unsigned long long kontonummer
+        -double kontostand
+        -int laufende_nummer$
+        -int anzahl_konten$
+        -init_kontostand(double kontostand) void
+        -set_bankkunde(CBankkunde* bankkunde) void
+        #get_anzahl_konten() const int&$
+        #set_kontostand(double kontostand, string berechtigung) void
+        +CKonto(double kontostand)
+        +~CKonto()
+        +anzeigen() void
+        +zeige_anzahl_konten() void$
+        +get_kontostand() const double&
+        +get_kontonummer() const unsigned long long&
+        +einzahlen(double betrag) void
+        +auszahlen(double betrag) double
+    }
+
+    class CSparbuch {
+        -double zinssatz
+        -double bearbeitungsgebuehr$
+        +CSparbuch(double kontostand, double zinssatz)
+        +get_zinssatz() const double&
+        +get_bearbeitungsgebuehr() const double&$
+        +set_bearbeitungsgebuehr(double gebuehr) void$
+        +verzinsen() void
+        +einzahlen(double betrag) void
+        +anzeigen() void
+    }
+
+    class CGirokonto {
+        -double kredit
+        +CGirokonto(double kontostand, double kreditrahmen)
+        +get_kredit() const double&
+        +set_kredit(double kreditrahmen) void
+        +auszahlen(double betrag) double
+        +anzeigen() void
+    }
+
+    CKunde <|-- CBankkunde
+    CKonto <|-- CSparbuch
+    CKonto <|-- CGirokonto
+    CBankkunde "0..1" -- "0..5" CKonto : verwaltet
+
+    note for CKonto "Virtuell: anzeigen(), einzahlen(), auszahlen()<br/>Freie friend-Funktion: zeige_gesamtbetrag()"
 ```
 
 

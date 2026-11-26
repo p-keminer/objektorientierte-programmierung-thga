@@ -12,8 +12,11 @@
 using std::cout, std::endl, std::istream;
 using std::exception, std::invalid_argument;
 using std::optional, std::nullopt;
-using std::move, std::pair, std::string, std::vector;
+using std::string;
+using std::move, std::pair, std::string;
 using std::ranges::find, std::ranges::is_sorted, std::ranges::minmax_element, std::ranges::sort;
+using std::vector;
+
 
 namespace {
     bool pruefe_abbruch(const string& eingabe) {
