@@ -11,9 +11,9 @@
 #include <stdexcept>
 
 
-/// Strukturen
+// Strukturen
 
-/// Struktur 1D
+// Struktur 1D
 
 template<typename T>
 struct data {
@@ -21,7 +21,7 @@ struct data {
     int index;
 };
 
-/// Strukturen 2D
+// Strukturen 2D
 
 struct data2 {
     int index_aussen;
@@ -35,7 +35,7 @@ struct data3 {
     int index_innen;
 };
 
-/// Struktur Testdaten
+// Struktur Testdaten
 
 struct erzeugen1 {
     int array[5];
@@ -60,14 +60,29 @@ struct erzeugen2 {
     std::vector<std::vector<int>> leer;
 };
 
-/// Funktionsdeklarationen
+// Funktionsdeklarationen
 
+/**
+ * @brief Sucht erstes Vorkommen eines Elements im Container.
+ * @return Bei Indexzugriff den Index. Sonst Objekt mit Iterator und Index.
+ * @throws std::invalid_argument Wenn Element nicht gefunden wird.
+ */
 template<typename T1, typename T2>
 auto suche(const T1& container, T2 element);
 
+/**
+ * @brief Sucht Sucht erstes Vorkommen in 2-Dimesionalen Containern.
+ * @return Äußerer und innerer Index. Ohne Indexzugriff äußerer.
+ * Container enthält das Ergebnis zusätzlich einen Iterator auf das gefundene Element.
+ * @throws std::invalid_argument Wenn das Element nicht gefunden wird.
+ */
 template<typename T1, typename T2>
 auto suche_2D(const T1& container, T2 element);
 
+/**
+ * @brief Ersetzt alle Vorkommen eines Wertes im Container.
+ * @return Anzahl der bearbeiteten Elemente.
+ */
 template<typename T1, typename T2>
 std::size_t ersetze(T1& container, T2 zu_ersetzen, T2 ersetzen_durch);
 

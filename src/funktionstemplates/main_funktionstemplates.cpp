@@ -9,7 +9,7 @@ int main() {
     auto container = erzeuge_1D_container();
     auto container2 = erzeuge_2D_container();
 
-    /// Suche 1D
+    // Suche 1D
 
     std::cout << "\n--- Suche 1D ---\n\n";
 
@@ -27,7 +27,7 @@ int main() {
     ausgabe(container.leer, 5);
     ausgabe(container.einzelwert, 99);
 
-    /// Suche 2D
+    // Suche 2D
 
     std::cout << "\n--- Suche 2D ---\n\n";
 
@@ -41,7 +41,7 @@ int main() {
     ausgabe_2D(container2.vektor_2D, 999);
     ausgabe_2D(container2.leer, 5);
 
-    /// Ersetzen
+    // Ersetzen
 
     std::cout << "\n--- Ersetzen ---\n\n";
 
@@ -62,9 +62,9 @@ int main() {
 }
 
 
-/// Suchfunktionen
+// Suchfunktionen
 
-/// Suche 1D
+// Suche 1D
 
 template<typename T1, typename T2>
 auto suche(const T1& container, const T2 element) {
@@ -84,7 +84,7 @@ auto suche(const T1& container, const T2 element) {
 }
 
 
-/// Suche 2D
+// Suche 2D
 
 template<typename T1, typename T2>
 auto suche_2D(const T1& container, const T2 element) {
@@ -110,7 +110,7 @@ auto suche_2D(const T1& container, const T2 element) {
 }
 
 
-/// Ersetzungsfunktion
+// Ersetzungsfunktion
 
 template<typename T1, typename T2>
 size_t ersetze(T1& container, T2 zu_ersetzen, T2 ersetzen_durch) {
@@ -128,7 +128,7 @@ size_t ersetze(T1& container, T2 zu_ersetzen, T2 ersetzen_durch) {
 }
 
 
-/// Ausgabefunktionen
+// Ausgabefunktionen
 
 void ausgabe(const auto& container, const auto element) {
 
@@ -169,7 +169,7 @@ void ausgabe_2D(const auto& container, const auto element) {
 }
 
 
-/// Testdaten
+// Testdaten
 
 erzeugen1 erzeuge_1D_container() {
     return {

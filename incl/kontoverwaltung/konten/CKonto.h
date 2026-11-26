@@ -18,11 +18,11 @@ private:
 
     CBankkunde* bankkunde = nullptr;
 
-    /// nur für CBankkunde gedacht
+    // nur für CBankkunde gedacht
 
     void set_bankkunde(CBankkunde* bankkunde);
 
-    /// INITIALISIERUNG
+    // INITIALISIERUNG
 
     void init_kontostand(const double &kontostand);
 
@@ -32,24 +32,27 @@ protected:
         return anzahl_konten;
     }
 
-    /// nur für girokonto gedacht
+    // nur für girokonto gedacht
 
     void set_kontostand(const double &kontostand, const string &berechtigung="nein");
 
 public:
     CKonto (const double &kontostand=0);
     //CKonto (const CKonto &anderes) = delete;
+    /**
+     * @brief Zahlt vorhandenes Guthaben aus, löst Kundenzuordnung und senkt Kontenzähler.
+     */
     ~CKonto();
 
 
-    /// DEBUG
+    // DEBUG
 
     virtual void anzeigen() const;
 
     static void zeige_anzahl_konten();
 
 
-    /// GETTER
+    // GETTER
 
     const double &get_kontostand() const {
         return kontostand;
@@ -59,7 +62,7 @@ public:
         return kontonummer;
     }
 
-    /// FUNKTIONALITÄT
+    // FUNKTIONALITÄT
 
     virtual void einzahlen(const double &betrag);
 

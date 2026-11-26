@@ -12,7 +12,7 @@ public:
     CSparbuch(const double &kontostand, const double &zinssatz = 3.3);
 
 
-    /// GETTER
+    // GETTER
 
     const double &get_zinssatz() const {
         return zinssatz;
@@ -22,15 +22,18 @@ public:
         return bearbeitungsgebuehr;
     }
 
-    /// SETTER
+    // SETTER
 
     static void set_bearbeitungsgebuehr(const double &gebuehr);
 
 
-    /// FUNKTIONALITÄT
+    // FUNKTIONALITÄT
 
     void verzinsen();
 
+    /**
+     * @brief Bucht Betrag abzüglich Bearbeitungsgebühr, solange ein positiver Betrag übrig bleibt.
+     */
     void einzahlen(const double &betrag) override;
 
     void anzeigen() const override;

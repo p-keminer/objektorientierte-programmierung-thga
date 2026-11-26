@@ -5,20 +5,20 @@
 
 using std::cout, std::endl;
 
-/// PUBLIC
+// PUBLIC
 
 CSparbuch::CSparbuch(const double &kontostand, const double &zinssatz)
     : CKonto(kontostand), zinssatz(zinssatz) {
 
 }
 
-/// SETTER
+// SETTER
 
 void CSparbuch::set_bearbeitungsgebuehr(const double &gebuehr) {
     bearbeitungsgebuehr = (gebuehr > 0 ? gebuehr : 0 );
 }
 
-/// FUNKTIONALITÄT
+// FUNKTIONALITÄT
 
 void CSparbuch::verzinsen() {
     CKonto::einzahlen(get_kontostand() * zinssatz/100 );

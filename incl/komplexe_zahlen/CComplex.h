@@ -7,12 +7,9 @@
 #include <string>
 
 
-
 using std::string;
 using std::hypot, std::pow, std::numbers::pi;
 using std::ostream;
-
-
 
 
 class CComplex {
@@ -45,8 +42,20 @@ private:
 
 
 public:
+    /**
+     * @brief Erzeugt komplexe Zahl aus kartesischer Schreibweise.
+     * @param eingabe Real und Imaginärteil zum Beispiel `-5+2i`.
+     * @throws std::invalid_argument Bei ungültigen Vorzeichen oder nicht lesbaren Zahlenteilen.
+     * @throws std::out_of_range Wenn Zahlen außerhalb des Wertebereichs von double liegen.
+     */
     explicit CComplex(const string& eingabe);
 
+    /**
+     * @brief Erstellt eine komplexe Zahl aus kartesischen oder polaren Koordinaten.
+     * @param x Realteil bei kartesischer Eingabe, sonst Betrag.
+     * @param y Imaginärteil bei kartesischer Eingabe, sonst Winkel im Bogenmaß.
+     * @param kartesisch Wählt bei true kartesische Koordinaten, bei false Polarkoordinaten.
+     */
     CComplex(double x, double y, bool kartesisch=true);
 
     CComplex(double anderes);
@@ -80,14 +89,20 @@ public:
 
     void set_imaginaer(double wert);
 
+    /**
+     * @brief Übernimmt den Absolutwert. Berechnet bei gleicher Phase die Komponenten neu.
+     */
     void set_betrag(double wert);
 
+    /**
+     * @brief Reduziert endlichen Winkel im Bogenmaß auf [-pi, pi]. Aktualisiert die Komponenten.
+     */
     void set_phase(double wert);
 
     string toString(bool kartesisch=true) const;
 
 
-    /// Operatorüberladungen
+    // Operatorüberladungen
 
     friend CComplex operator+(const CComplex& links,const CComplex& rechts);
 
@@ -97,10 +112,17 @@ public:
 
     CComplex& operator-=(const CComplex &rechts);
 
+    /**
+     * @brief Multipliziert Beträge und addiert Phasen.
+     */
     friend CComplex operator*(const CComplex &links, const CComplex &rechts);
 
     CComplex& operator*=(const CComplex &rechts);
 
+    /**
+     * @brief Dividiert Beträge und subtrahiert Phasen.
+     * @throws std::invalid_argument Wenn Real und Imaginärteil des Nenners null sind (0+0i).
+     */
     friend CComplex operator/(const CComplex &links, const CComplex &rechts);
 
     CComplex& operator/=(const CComplex &rechts);
@@ -109,9 +131,19 @@ public:
         return ostream << zahl.real << zahl.get_imag_string();
     }
 
+    /**
+     * @brief Vergleicht Real und Imaginärteil exakt, ohne Toleranz für Rundungsfehler.
+     */
     friend bool operator==(const CComplex &links, const CComplex &rechts);
 
+    /**
+     * @brief Vergleicht komplexe Zahlen anhand des Betrags.
+     */
     friend bool operator<(const CComplex &links, const CComplex &rechts);
+
+    /**
+     * @brief Vergleicht komplexe Zahlen anhand des Betrags.
+     */
     friend bool operator>(const CComplex &links, const CComplex &rechts);
 
     CComplex operator-() const;

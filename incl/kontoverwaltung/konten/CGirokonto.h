@@ -12,18 +12,23 @@ private:
 public:
     CGirokonto(const double &kontostand=0, const double &kreditrahmen=0);
 
-    /// GETTER
+    // GETTER
 
     const double &get_kredit() const {
         return kredit;
     }
 
-    /// SETTER
+    // SETTER
 
     void set_kredit(const double &kreditrahmen);
 
-    /// FUNKTIONALITÄT
+    // FUNKTIONALITÄT
 
+    /**
+     * @brief Zahlt positiven Betrag bis zur Grenze aus Guthaben und Kreditrahmen aus.
+     * @return Ausgezahlter Betrag.
+     * Auszahlungen werden zu Null validiert, wenn diese abgelehnt werden.
+     */
     double auszahlen(const double &betrag) override;
 
     void anzeigen() const override;

@@ -11,7 +11,8 @@ void test_konstruktor() {
     assert(kartesisch.get_imaginaer() == 4);
     assert(kartesisch.get_betrag() == 5);
 
-    // Betrag 2 und Winkel pi/2 = 0 + 2i.
+    // Betrag 2 und Winkel pi/2 = 0 + 2i
+
     const CComplex polar(2, pi / 2, false);
     assert(std::abs(polar.get_real(12)) < 1e-9);
     assert(std::abs(polar.get_imaginaer(12) - 2) < 1e-9);
@@ -52,12 +53,14 @@ void test_grundrechenarten() {
     const CComplex differenz = zahl1 - zahl2;
     assert(differenz.get_real() == 0 && differenz.get_imaginaer() == 2);
 
-    // Bei Umrechnung aus Polarform können Rundungsfehler entstehen.
+    // Bei Umrechnung aus Polarform können Rundungsfehler entstehen
+
     const CComplex produkt = zahl1 * zahl1;
     assert(std::abs(produkt.get_real(12)) < 1e-9);
     assert(std::abs(produkt.get_imaginaer(12) - 2) < 1e-9);
 
-    // (21 + 28i) / 7i = 4 - 3i.
+    // (21 + 28i) / 7i = 4 - 3i
+
     const CComplex quotient = CComplex(21, 28) / CComplex(0, 7);
     assert(std::abs(quotient.get_real(12) - 4) < 1e-9);
     assert(std::abs(quotient.get_imaginaer(12) + 3) < 1e-9);

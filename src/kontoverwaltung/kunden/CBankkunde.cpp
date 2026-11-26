@@ -10,7 +10,7 @@
 
 using std::ranges::find;
 
-/// INITIALISISERUNG
+// INITIALISISERUNG
 
 CBankkunde::CBankkunde(const string &nachname, const DatumT &geburtsdatum, const string &vorname)
     :CKunde(nachname, geburtsdatum, vorname)
@@ -21,7 +21,7 @@ CBankkunde::~CBankkunde() {
     delete_all_kontos();
 }
 
-/// GETTER
+// GETTER
 
 
 double CBankkunde::get_gesamtsaldo() const {
@@ -41,7 +41,7 @@ CKonto &CBankkunde::get_konto(CKonto* konto) {
     return (**it);
 }
 
-/// SETTER
+// SETTER
 
 void CBankkunde::add_konto(CKonto* konto) {
 

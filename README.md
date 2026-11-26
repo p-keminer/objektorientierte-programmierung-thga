@@ -21,7 +21,7 @@ Objektorientierte Programmierung.
 
 
 ---
-**Stand: 25.11.2026** - In Bearbeitung
+**Stand: 26.11.2026** - In Bearbeitung
 
 </div>
 
@@ -212,6 +212,8 @@ OOP/
 
 <div align="center">
 
+[![GitHub](https://img.shields.io/badge/GitHub-24292f?style=for-the-badge)](https://github.com/p-keminer/objektorientierte-programmierung-thga)
+[![GitLab](https://img.shields.io/badge/GitLab-24292f?style=for-the-badge)](https://gitlab.thga.de/philip.keminer/OOP)
 [![⬆_Nach_oben](https://img.shields.io/badge/⬆_Nach_Oben-24292f?style=for-the-badge)](#top)
 
 </div>

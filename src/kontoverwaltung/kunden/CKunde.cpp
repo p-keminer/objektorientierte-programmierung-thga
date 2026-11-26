@@ -9,7 +9,7 @@ using std::string, std::to_string;
 using std::cout, std::endl;
 
 
-/// HELFER
+// HELFER
 
 namespace
 {
@@ -30,7 +30,7 @@ namespace
 
 }
 
-/// INITIALISIERUNG
+// INITIALISIERUNG
 
 bool CKunde::validiere_geburtsdatum(DatumT datum) {
     if (datum.jahr < 1900 || datum.monat < 1 || datum.monat > 12) return false;
@@ -75,7 +75,7 @@ CKunde::CKunde(const string &nachname,const DatumT &geburtsdatum, const string &
     berechne_alter();
 }
 
-/// DEBUG
+// DEBUG
 
 string CKunde::anzeigen() const {
     string vorstellen =   "Name        : " + nachname
@@ -87,7 +87,7 @@ string CKunde::anzeigen() const {
 }
 
 
-/// GETTER
+// GETTER
 
 const short &CKunde::get_alter() {
     berechne_alter();

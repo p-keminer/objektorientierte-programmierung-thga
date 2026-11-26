@@ -17,12 +17,16 @@ using std::pair;
 
 
 
-
-
-/// Helfer
+// Helfer
 
 namespace {
 
+    /**
+     * @brief Ermittelt Vorzeichen für kartesische Eingabe.
+     * @return führendes Minus vom Realteil und Trennzeichen oder Trennzeichen allein.
+     * @throws std::invalid_argument Bei fehlenden, zusätzlichen oder falsch platzierten Vorzeichen.
+     * Eingaben wie 5asd-4axzi sind erlaubt und werden später von std::stod verwaltet.
+     */
     vector<char> finde_vorzeichen(const string &eingabe) {
         size_t index1 = eingabe.find_first_of("+-");
         size_t index2 = eingabe.find_last_of("+-");
@@ -45,11 +49,18 @@ namespace {
         vorzeichen.push_back(vorzeichen1);
         return vorzeichen;
     }
-
+    /**
+     * @brief Ermittelt aus zuvor ermittelten Vorzeichen das Trennzeichen.
+     * @return zuvor validiertes Trenzzeichen.
+     */
     const char validiere_trennzeichen(vector<char> vorzeichen) {
         return vorzeichen.size() > 1 ? *(vorzeichen.begin()+1) : *vorzeichen.begin();
     }
 
+    /**
+     * @brief trennt Eingaben (-5+7i oder 4-3i) an '+', '-' auf, separiert die Bestandteile Links und Rechts.
+     * @return Bestandteile Links und Rechts vom Trennzeichen.
+     */
     vector<string> split_string(string aufzuteilen, char trennzeichen) {
         vector<string> aufgeteilt;
         size_t index = aufzuteilen.rfind(trennzeichen);
@@ -59,10 +70,21 @@ namespace {
         return aufgeteilt;
     }
 
+    /**
+     * @brief wandelt zuvor aufgeteilte Strings in double um.
+     * @return Realteil als Element 'first' und Imaginärteil als 'second'.
+     * Beachtet bei Umwandlung nur das Vorzeichen vom Realteil.
+     */
     pair<double, double> umwandeln(vector<string> aufgeteilt) {
         return {stod(*aufgeteilt.begin()),stod(aufgeteilt.back())};
     }
 
+    /**
+     * @brief Verwaltet vorherigen Funktionen, ermittelt das Vorzeichen vom Imaginärteil und gleicht diesen an.
+     * @return Endgültige Werte für den String Konstruktor.
+     * @throws std::invalid_argument Bei fehlenden, zusätzlichen oder falsch platzierten Vorzeichen.
+     * Eingaben wie 5asd-4axzi sind erlaubt.
+     */
     pair<double,double> string_zu_double(const string &eingabe) {
         auto vorzeichen = finde_vorzeichen(eingabe);
         char trennzeichen = validiere_trennzeichen(vorzeichen);
@@ -74,7 +96,7 @@ namespace {
 }
 
 
-/// CComplex
+// CComplex
 
 void CComplex::aktualisiere_betrag_phase() {
     betrag = berechne_betrag();
@@ -88,7 +110,7 @@ void CComplex::aktualisiere_real_imaginaer() {
 
 
 
-/// String Konstruktor
+// String Konstruktor
 
 CComplex::CComplex(const string& eingabe)
     :real(0), imaginaer(0), betrag(0), phase(0)
@@ -100,7 +122,7 @@ CComplex::CComplex(const string& eingabe)
 }
 
 
-/// Normaler Konstruktor
+// Normaler Konstruktor
 
 CComplex::CComplex(double x, double y, bool kartesisch)
     :real(0), imaginaer(0), betrag(0), phase(0)
@@ -116,7 +138,7 @@ CComplex::CComplex(double x, double y, bool kartesisch)
 
 }
 
-/// Typumwandlungskonstruktor
+// Typumwandlungskonstruktor
 
 
 CComplex::CComplex(double anderes)
@@ -126,7 +148,7 @@ CComplex::CComplex(double anderes)
 }
 
 
-/// Setter
+// Setter
 
 void CComplex::set_real(double wert) {
     real = wert;
@@ -171,7 +193,7 @@ string CComplex::toString(const bool kartesisch) const {
     return stream.str();
 }
 
-/// Operatorüberladung
+// Operatorüberladung
 
 CComplex operator+(const CComplex& links, const CComplex& rechts) {
     return {
@@ -204,6 +226,7 @@ CComplex operator*(const CComplex &links, const CComplex &rechts) {
         false
     };
 }
+
 
 CComplex& CComplex::operator*=(const CComplex &rechts) {
     *this = *this * rechts;

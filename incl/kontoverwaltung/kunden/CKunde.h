@@ -19,21 +19,27 @@ private:
 	DatumT geburtsdatum;
 	short alter;
 
-	/// INITIALISIERUNG & AKTUALISIERUNG
+	// INITIALISIERUNG & AKTUALISIERUNG
 
+	/**
+	 * @brief Prüft Kalendertag und Schaltjahr. Gültige Datumswerte sind von 1900 bis heute.
+	 */
 	bool validiere_geburtsdatum(DatumT datum);
 
+	/**
+	 * @brief Berechnet volle Lebensjahre und berücksichtigt, ob Geburtstag dieses Jahr schon war.
+	 */
 	void berechne_alter();
 
 public:
 	CKunde(const string &nachname,const DatumT &geburtsdatum = {1, 1, 1900}, const string &vorname="");
 
-	/// DEBUG
+	// DEBUG
 
 	string anzeigen() const;
 
 
-	/// GETTER
+	// GETTER
 
 	const string& get_name() const {
 		return nachname;
@@ -43,7 +49,10 @@ public:
 		return vorname;
 	}
 
-	const short &get_alter();
+	/**
+	 * @brief Berechnet Alter mit aktuellem Datum neu und liefert den gespeicherten Wert.
+	 */
+	const short& get_alter();
 
 
 };

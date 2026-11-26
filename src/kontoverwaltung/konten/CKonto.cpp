@@ -7,20 +7,20 @@
 
 using std::cout, std::endl;
 
-/// PRIVATE
+// PRIVATE
 
 void CKonto::init_kontostand(const double &kontostand) {
     this->kontostand = (kontostand >= 0 ? kontostand : 0);
 }
 
-/// PROTECTED
+// PROTECTED
 
 void CKonto::set_kontostand(const double &kontostand, const string &berechtigung) {
     this->kontostand = (berechtigung == "OK" ? kontostand : this->kontostand);
 }
 
 
-/// PUBLIC
+// PUBLIC
 
 CKonto::CKonto (const double &kontostand)
 {
@@ -38,7 +38,7 @@ CKonto::~CKonto() {
     // cout << "\nobjekt " << kontonummer << " zerstoert\n" << endl;
 };
 
-/// DEBUG
+// DEBUG
 
 void CKonto::anzeigen() const {
     cout << "Kontonummer: " << kontonummer << ", Kontostand: "
@@ -49,14 +49,14 @@ void CKonto::zeige_anzahl_konten() {
     cout << "Anzahl Konten: " << anzahl_konten << endl;
 }
 
-/// SETTER
+// SETTER
 
 void CKonto::set_bankkunde(CBankkunde* bankkunde) {
     if (this->bankkunde && bankkunde) throw std::logic_error("Konto schon einem Bankkunden zugewiesen!");
     this->bankkunde = bankkunde;
 }
 
-/// FUNKTIONALITÄT
+// FUNKTIONALITÄT
 
 void CKonto::einzahlen(const double &betrag) {
     kontostand += (betrag > 0 ? betrag : 0) ;
